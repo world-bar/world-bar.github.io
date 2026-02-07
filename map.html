@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harta Globală Prosperitate | Global Prosperity Barometer</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .lang-selector select {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        
+        .legend {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+        
+        .legend h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .legend-scale {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .legend-bar {
+            flex: 1;
+            height: 20px;
+            background: linear-gradient(to right, 
+                #d73027 0%, 
+                #fc8d59 25%, 
+                #fee08b 50%, 
+                #91cf60 75%, 
+                #1a9850 100%);
+            border-radius: 5px;
+        }
+        
+        .legend-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+        
+        .controls button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .controls select {
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        
+        .info-box {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            min-width: 200px;
+            display: none;
+        }
+        
+        .info-box.show {
+            display: block;
+        }
+        
+        .info-box h4 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .info-box .score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff416c;
+            margin: 10px 0;
+        }
+        
+        .back-home {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .back-home a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .back-home a:hover {
+            color: #ff416c;
+        }
+        
+        @media (max-width: 768px) {
+            #map {
+                height: 400px;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .info-box {
+                position: static;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-selector">
+        <select id="langSwitch" onchange="switchLanguage()">
+            <option value="ro">🇷🇴 RO</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="es">🇪🇸 ES</option>
+        </select>
+    </div>
+
+    <div class="header">
+        <h1 id="pageTitle">Harta Globală a Prosperității</h1>
+        <p id="pageSubtitle">Explorează indicatorii de prosperitate pe континенte</p>
+    </div>
+
+    <div class="container">
+        <div class="legend">
+            <h3 id="legendTitle">Scorul de Prosperitate (0-100)</h3>
+            <div class="legend-scale">
+                <span>Scăzut</span>
+                <div class="legend-bar"></div>
+                <span>Ridicat</span>
+            </div>
+            <div class="legend-labels">
+                <span>0-20</span>
+                <span>20-40</span>
+                <span>40-60</span>
+                <span>60-80</span>
+                <span>80-100</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <select id="continentFilter" onchange="filterByContinent()">
+                <option value="all">🌍 Toate Continentele</option>
+                <option value="europe">🇪🇺 Europa</option>
+                <option value="asia">🌏 Asia</option>
+                <option value="africa">🌍 Africa</option>
+                <option value="namerica">🌎 America de Nord</option>
+                <option value="samerica">🌎 America de Sud</option>
+                <option value="oceania">🌏 Oceania</option>
+            </select>
+            <button onclick="resetMap()">🔄 Resetează Harta</button>
+            <button onclick="showTop10()">🏆 Top 10 Țări</button>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="info-box" id="infoBox">
+            <h4 id="countryName">Selectează o țară</h4>
+            <div class="score" id="countryScore">--</div>
+            <p id="countryRank">Rank: --</p>
+            <p id="countryContinent">Continent: --</p>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html">← Înapoi la Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Date demo pentru țări (scor de prosperitate 0-100)
+        const countryData = {
+            'Norway': {score: 92, continent: 'europe'},
+            'Denmark': {score: 91, continent: 'europe'},
+            'Sweden': {score: 90, continent: 'europe'},
+            'Finland': {score: 89, continent: 'europe'},
+            'Switzerland': {score: 88, continent: 'europe'},
+            'Netherlands': {score: 87, continent: 'europe'},
+            'Iceland': {score: 86, continent: 'europe'},
+            'Germany': {score: 85, continent: 'europe'},
+            'Austria': {score: 84, continent: 'europe'},
+            'Luxembourg': {score: 84, continent: 'europe'},
+            'Belgium': {score: 83, continent: 'europe'},
+            'United Kingdom': {score: 82, continent: 'europe'},
+            'France': {score: 81, continent: 'europe'},
+            'Ireland': {score: 80, continent: 'europe'},
+            'Canada': {score: 82, continent: 'namerica'},
+            'United States of America': {score: 79, continent: 'namerica'},
+            'Australia': {score: 83, continent: 'oceania'},
+            'New Zealand': {score: 85, continent: 'oceania'},
+            'Japan': {score: 78, continent: 'asia'},
+            'South Korea': {score: 77, continent: 'asia'},
+            'Singapore': {score: 81, continent: 'asia'},
+            'Spain': {score: 76, continent: 'europe'},
+            'Italy': {score: 75, continent: 'europe'},
+            'Portugal': {score: 74, continent: 'europe'},
+            'Greece': {score: 70, continent: 'europe'},
+            'Poland': {score: 72, continent: 'europe'},
+            'Czech Republic': {score: 73, continent: 'europe'},
+            'Estonia': {score: 74, continent: 'europe'},
+            'Slovenia': {score: 75, continent: 'europe'},
+            'Chile': {score: 68, continent: 'samerica'},
+            'Uruguay': {score: 70, continent: 'samerica'},
+            'Argentina': {score: 65, continent: 'samerica'},
+            'Brazil': {score: 62, continent: 'samerica'},
+            'Mexico': {score: 60, continent: 'namerica'},
+            'China': {score: 64, continent: 'asia'},
+            'India': {score: 54, continent: 'asia'},
+            'Russia': {score: 58, continent: 'europe'},
+            'Turkey': {score: 61, continent: 'asia'},
+            'South Africa': {score: 55, continent: 'africa'},
+            'Egypt': {score: 52, continent: 'africa'},
+            'Nigeria': {score: 45, continent: 'africa'},
+            'Kenya': {score: 48, continent: 'africa'},
+            'Ghana': {score: 50, continent: 'africa'},
+            'Morocco': {score: 53, continent: 'africa'},
+            'Tunisia': {score: 56, continent: 'africa'},
+            'Romania': {score: 69, continent: 'europe'},
+            'Bulgaria': {score: 66, continent: 'europe'},
+            'Hungary': {score: 68, continent: 'europe'},
+            'Croatia': {score: 71, continent: 'europe'},
+            'Serbia': {score: 63, continent: 'europe'},
+            'Ukraine': {score: 55, continent: 'europe'},
+            'Thailand': {score: 59, continent: 'asia'},
+            'Vietnam': {score: 57, continent: 'asia'},
+            'Malaysia': {score: 63, continent: 'asia'},
+            'Indonesia': {score: 56, continent: 'asia'},
+            'Philippines': {score: 54, continent: 'asia'},
+            'Pakistan': {score: 47, continent: 'asia'},
+            'Bangladesh': {score: 49, continent: 'asia'},
+            'Iran': {score: 51, continent: 'asia'},
+            'Iraq': {score: 43, continent: 'asia'},
+            'Saudi Arabia': {score: 58, continent: 'asia'},
+            'United Arab Emirates': {score: 67, continent: 'asia'},
+            'Israel': {score: 76, continent: 'asia'},
+            'Colombia': {score: 59, continent: 'samerica'},
+            'Peru': {score: 57, continent: 'samerica'},
+            'Venezuela': {score: 42, continent: 'samerica'},
+            'Ecuador': {score: 55, continent: 'samerica'},
+            'Bolivia': {score: 51, continent: 'samerica'},
+            'Paraguay': {score: 54, continent: 'samerica'},
+            'Costa Rica': {score: 66, continent: 'namerica'},
+            'Panama': {score: 63, continent: 'namerica'},
+            'Cuba': {score: 52, continent: 'namerica'},
+            'Jamaica': {score: 56, continent: 'namerica'},
+            'Ethiopia': {score: 41, continent: 'africa'},
+            'Tanzania': {score: 44, continent: 'africa'},
+            'Uganda': {score: 46, continent: 'africa'},
+            'Sudan': {score: 38, continent: 'africa'},
+            'Algeria': {score: 54, continent: 'africa'},
+            'Libya': {score: 40, continent: 'africa'},
+            'Zimbabwe': {score: 39, continent: 'africa'},
+            'Mozambique': {score: 42, continent: 'africa'},
+            'Madagascar': {score: 40, continent: 'africa'},
+            'Cameroon': {score: 43, continent: 'africa'},
+            'Senegal': {score: 49, continent: 'africa'},
+            'Mali': {score: 37, continent: 'africa'},
+            'Niger': {score: 35, continent: 'africa'},
+            'Chad': {score: 34, continent: 'africa'},
+            'Central African Republic': {score: 32, continent: 'africa'},
+            'Congo': {score: 36, continent: 'africa'},
+            'Dem. Rep. Congo': {score: 33, continent: 'africa'},
+            'Angola': {score: 44, continent: 'africa'},
+            'Zambia': {score: 45, continent: 'africa'},
+            'Malawi': {score: 41, continent: 'africa'},
+            'Botswana': {score: 57, continent: 'africa'},
+            'Namibia': {score: 53, continent: 'africa'},
+            'Afghanistan': {score: 28, continent: 'asia'},
+            'Syria': {score: 31, continent: 'asia'},
+            'Yemen': {score: 30, continent: 'asia'},
+            'Myanmar': {score: 42, continent: 'asia'},
+            'Cambodia': {score: 51, continent: 'asia'},
+            'Laos': {score: 48, continent: 'asia'},
+            'Nepal': {score: 46, continent: 'asia'},
+            'Sri Lanka': {score: 55, continent: 'asia'},
+            'Kazakhstan': {score: 61, continent: 'asia'},
+            'Uzbekistan': {score: 52, continent: 'asia'},
+            'Mongolia': {score: 56, continent: 'asia'},
+            'North Korea': {score: 25, continent: 'asia'}
+        };
+
+        // Inițializare hartă
+        const map = L.map('map').setView([20, 0], 2);
+
+        // Adaugă layer de bază OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        let geojsonLayer;
+
+        // Funcție pentru culoare bazată pe scor
+        function getColor(score) {
+            return score > 80 ? '#1a9850' :
+                   score > 60 ? '#91cf60' :
+                   score > 40 ? '#fee08b' :
+                   score > 20 ? '#fc8d59' :
+                                '#d73027';
+        }
+
+        // Style pentru fiecare țară
+        function style(feature) {
+            const countryName = feature.properties.name || feature.properties.ADMIN;
+            const data = countryData[countryName];
+            const score = data ? data.score : 50;
+            
+            return {
+                fillColor: getColor(score),
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7
+            };
+        }
+
+        // Evenimente hover
+        function highlightFeature(e) {
+            const layer = e.target;
+            layer.setStyle({
+                weight: 3,
+                color: '#666',
+                fillOpacity: 0.9
+            });
+            layer.bringToFront();
+
+            const countryName = layer.feature.properties.name || layer.feature.properties.ADMIN;
+            const data = countryData[countryName];
+            
+            if (data) {
+                document.getElementById('countryName').textContent = countryName;
+                document.getElementById('countryScore').textContent = data.score;
+                document.getElementById('countryRank').textContent = `Rank: ${getRank(countryName)}`;
+                document.getElementById('countryContinent').textContent = `Continent: ${getContinentName(data.continent)}`;
+                document.getElementById('infoBox').classList.add('show');
+            }
+        }
+
+        function resetHighlight(e) {
+            geojsonLayer.resetStyle(e.target);
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: function(e) {
+                    map.fitBounds(e.target.getBounds());
+                }
+            });
+        }
+
+        // Încarcă date GeoJSON (simplificat - folosim API pentru țări)
+        fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
+            .then(response => response.json())
+            .then(data => {
+                geojsonLayer = L.geoJSON(data, {
+                    style: style,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+            });
+
+        // Funcții auxiliare
+        function getRank(countryName) {
+            const sorted = Object.entries(countryData)
+                .sort((a, b) => b[1].score - a[1].score);
+            const index = sorted.findIndex(([name]) => name === countryName);
+            return index >= 0 ? index + 1 : '--';
+        }
+
+        function getContinentName(code) {
+            const names = {
+                'europe': 'Europa',
+                'asia': 'Asia',
+                'africa': 'Africa',
+                'namerica': 'America de Nord',
+                'samerica': 'America de Sud',
+                'oceania': 'Oceania'
+            };
+            return names[code] || code;
+        }
+
+        function filterByContinent() {
+            const continent = document.getElementById('continentFilter').value;
+            // Implementare filtru - poate fi extinsă
+            if (continent === 'all') {
+                map.setView([20, 0], 2);
+            }
+        }
+
+        function resetMap() {
+            map.setView([20, 0], 2);
+            document.getElementById('infoBox').classList.remove('show');
+        }
+
+        function showTop10() {
+            const top10 = Object.entries(countryData)
+                .sort((a, b) => b[1].score - a[1].score)
+                .slice(0, 10)
+                .map(([name, data], i) => `${i+1}. ${name}: ${data.score}`)
+                .join('\n');
+            alert('Top 10 Țări:\n\n' + top10);
+        }
+
+        function switchLanguage() {
+            const lang = document.getElementById('langSwitch').value;
+            // Implementare schimbare limbă - poate fi extinsă
+            console.log('Language switched to:', lang);
+        }
+    </script>
+</body>
+</html>
