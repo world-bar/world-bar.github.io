@@ -271,16 +271,18 @@ function renderGlobalTrade() {
 
   function fmtT(v) { return `$${(v/1000).toFixed(1)}T`; }
 
-  // Top 5 exporters
-  const sorted = allEcon.slice().sort((a, b) => (b.exports || 0) - (a.exports || 0)).slice(0, 5);
-  const topRows = sorted.map(e => {
+  // Top 5 most trade-open economies (by exports % GDP)
+  const withCountry = allEcon.map(e => {
     const country = countries.find(c => Data.getEconomics(c.id) === e);
-    if (!country) return '';
-    const name = I18n.getCountryName(country);
-    const topExports = (e.top_exports || []).slice(0, 3).join(', ');
+    return { e, country };
+  }).filter(d => d.country && d.e.exports_pct_gdp);
+  const sorted = withCountry.sort((a, b) => b.e.exports_pct_gdp - a.e.exports_pct_gdp).slice(0, 5);
+  const topRows = sorted.map(d => {
+    const name = I18n.getCountryName(d.country);
+    const topExports = (d.e.top_exports || []).slice(0, 3).join(', ');
     return `<tr>
-      <td><a href="country.html?id=${country.id}">${name}</a></td>
-      <td class="trade-val">$${e.exports.toFixed(0)}B</td>
+      <td><a href="country.html?id=${d.country.id}">${name}</a></td>
+      <td class="trade-val">${d.e.exports_pct_gdp}%</td>
       <td class="trade-products">${topExports}</td>
     </tr>`;
   }).join('');
@@ -309,7 +311,7 @@ function renderGlobalTrade() {
       <table class="ranking-table trade-top-table">
         <thead><tr>
           <th>${I18n.t('overview.country')}</th>
-          <th>${I18n.t('trade.exports')}</th>
+          <th>${I18n.t('trade.openness')}</th>
           <th>${I18n.t('trade.top_exports')}</th>
         </tr></thead>
         <tbody>${topRows}</tbody>
