@@ -1486,14 +1486,58 @@ body {
     background: var(--dark-blue);
 }
 
-.quiz-share-btn {
-    background: var(--bg-light);
-    color: var(--dark-blue);
-    border: 1px solid var(--border-gray) !important;
+.quiz-share-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-gray);
 }
 
-.quiz-share-btn:hover {
-    background: #e8f0f8;
+.quiz-share-label {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.quiz-share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.quiz-social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s, opacity 0.2s;
+    color: var(--white);
+}
+
+.quiz-social-btn:hover {
+    transform: scale(1.1);
+}
+
+.quiz-social-whatsapp { background: #25D366; }
+.quiz-social-x { background: #000; }
+.quiz-social-facebook { background: #1877F2; }
+.quiz-social-linkedin { background: #0A66C2; }
+.quiz-social-telegram { background: #26A5E4; }
+.quiz-social-copy {
+    background: var(--bg-light);
+    color: var(--text-gray);
+    border: 1px solid var(--border-gray);
+}
+.quiz-social-copy.copied {
+    background: #e8f5e9;
+    color: #2E7D32;
+    border-color: #2E7D32;
 }
 
 /* ===== RTL Support ===== */
