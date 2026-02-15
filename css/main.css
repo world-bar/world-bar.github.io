@@ -869,6 +869,10 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
+.econ-metrics-4 .econ-metric-label {
+    white-space: nowrap;
+}
+
 .econ-metric {
     background: var(--bg-light);
     padding: 1.25rem;
