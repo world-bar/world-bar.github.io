@@ -498,5 +498,255 @@
     "corruption_rank": 133,
     "press_freedom_rank": 152,
     "rule_of_law": 0.38
+  },
+  "hungary": {
+    "system": "parliamentary_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 6.50,
+    "happiness_score": 5.6,
+    "conflict_status": "peace",
+    "corruption_rank": 77,
+    "press_freedom_rank": 72,
+    "rule_of_law": 0.54
+  },
+  "croatia": {
+    "system": "parliamentary_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 6.50,
+    "happiness_score": 5.8,
+    "conflict_status": "peace",
+    "corruption_rank": 57,
+    "press_freedom_rank": 44,
+    "rule_of_law": 0.57
+  },
+  "estonia": {
+    "system": "parliamentary_republic",
+    "regime": "full_democracy",
+    "democracy_score": 8.07,
+    "happiness_score": 6.4,
+    "conflict_status": "peace",
+    "corruption_rank": 12,
+    "press_freedom_rank": 6,
+    "rule_of_law": 0.81
+  },
+  "serbia": {
+    "system": "parliamentary_republic",
+    "regime": "hybrid_regime",
+    "democracy_score": 5.81,
+    "happiness_score": 5.4,
+    "conflict_status": "tension",
+    "corruption_rank": 101,
+    "press_freedom_rank": 91,
+    "rule_of_law": 0.49
+  },
+  "lithuania": {
+    "system": "semi_presidential",
+    "regime": "full_democracy",
+    "democracy_score": 7.50,
+    "happiness_score": 6.4,
+    "conflict_status": "peace",
+    "corruption_rank": 33,
+    "press_freedom_rank": 7,
+    "rule_of_law": 0.78
+  },
+  "thailand": {
+    "system": "constitutional_monarchy",
+    "regime": "hybrid_regime",
+    "democracy_score": 5.05,
+    "happiness_score": 5.8,
+    "conflict_status": "tension",
+    "corruption_rank": 101,
+    "press_freedom_rank": 106,
+    "rule_of_law": 0.49
+  },
+  "vietnam": {
+    "system": "one_party_state",
+    "regime": "authoritarian",
+    "democracy_score": 2.73,
+    "happiness_score": 5.8,
+    "conflict_status": "peace",
+    "corruption_rank": 83,
+    "press_freedom_rank": 174,
+    "rule_of_law": 0.48
+  },
+  "malaysia": {
+    "system": "constitutional_monarchy",
+    "regime": "flawed_democracy",
+    "democracy_score": 7.30,
+    "happiness_score": 6.0,
+    "conflict_status": "peace",
+    "corruption_rank": 57,
+    "press_freedom_rank": 73,
+    "rule_of_law": 0.58
+  },
+  "philippines": {
+    "system": "presidential_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 6.12,
+    "happiness_score": 5.7,
+    "conflict_status": "minor_conflict",
+    "corruption_rank": 116,
+    "press_freedom_rank": 132,
+    "rule_of_law": 0.47
+  },
+  "bangladesh": {
+    "system": "parliamentary_republic",
+    "regime": "hybrid_regime",
+    "democracy_score": 5.57,
+    "happiness_score": 4.0,
+    "conflict_status": "tension",
+    "corruption_rank": 149,
+    "press_freedom_rank": 163,
+    "rule_of_law": 0.39
+  },
+  "taiwan": {
+    "system": "semi_presidential",
+    "regime": "full_democracy",
+    "democracy_score": 8.99,
+    "happiness_score": 6.5,
+    "conflict_status": "tension",
+    "corruption_rank": 25,
+    "press_freedom_rank": 35,
+    "rule_of_law": 0.79
+  },
+  "iran": {
+    "system": "theocratic_republic",
+    "regime": "authoritarian",
+    "democracy_score": 1.96,
+    "happiness_score": 4.7,
+    "conflict_status": "tension",
+    "corruption_rank": 147,
+    "press_freedom_rank": 176,
+    "rule_of_law": 0.34
+  },
+  "peru": {
+    "system": "presidential_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 5.86,
+    "happiness_score": 5.8,
+    "conflict_status": "tension",
+    "corruption_rank": 101,
+    "press_freedom_rank": 110,
+    "rule_of_law": 0.47
+  },
+  "uruguay": {
+    "system": "presidential_republic",
+    "regime": "full_democracy",
+    "democracy_score": 8.61,
+    "happiness_score": 6.5,
+    "conflict_status": "peace",
+    "corruption_rank": 18,
+    "press_freedom_rank": 28,
+    "rule_of_law": 0.71
+  },
+  "dominican_republic": {
+    "system": "presidential_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 6.20,
+    "happiness_score": 5.5,
+    "conflict_status": "peace",
+    "corruption_rank": 110,
+    "press_freedom_rank": 44,
+    "rule_of_law": 0.46
+  },
+  "venezuela": {
+    "system": "presidential_republic",
+    "regime": "authoritarian",
+    "democracy_score": 2.28,
+    "happiness_score": 5.0,
+    "conflict_status": "tension",
+    "corruption_rank": 177,
+    "press_freedom_rank": 159,
+    "rule_of_law": 0.27
+  },
+  "cuba": {
+    "system": "one_party_state",
+    "regime": "authoritarian",
+    "democracy_score": 2.55,
+    "happiness_score": 5.4,
+    "conflict_status": "peace",
+    "corruption_rank": 65,
+    "press_freedom_rank": 171,
+    "rule_of_law": 0.40
+  },
+  "tanzania": {
+    "system": "presidential_republic",
+    "regime": "hybrid_regime",
+    "democracy_score": 4.41,
+    "happiness_score": 3.8,
+    "conflict_status": "peace",
+    "corruption_rank": 87,
+    "press_freedom_rank": 123,
+    "rule_of_law": 0.45
+  },
+  "rwanda": {
+    "system": "presidential_republic",
+    "regime": "authoritarian",
+    "democracy_score": 3.10,
+    "happiness_score": 3.7,
+    "conflict_status": "tension",
+    "corruption_rank": 49,
+    "press_freedom_rank": 131,
+    "rule_of_law": 0.56
+  },
+  "tunisia": {
+    "system": "presidential_republic",
+    "regime": "hybrid_regime",
+    "democracy_score": 4.44,
+    "happiness_score": 4.6,
+    "conflict_status": "tension",
+    "corruption_rank": 87,
+    "press_freedom_rank": 121,
+    "rule_of_law": 0.47
+  },
+  "botswana": {
+    "system": "parliamentary_republic",
+    "regime": "flawed_democracy",
+    "democracy_score": 7.62,
+    "happiness_score": 3.5,
+    "conflict_status": "peace",
+    "corruption_rank": 35,
+    "press_freedom_rank": 39,
+    "rule_of_law": 0.62
+  },
+  "qatar": {
+    "system": "absolute_monarchy",
+    "regime": "authoritarian",
+    "democracy_score": 3.19,
+    "happiness_score": 6.4,
+    "conflict_status": "peace",
+    "corruption_rank": 40,
+    "press_freedom_rank": 128,
+    "rule_of_law": 0.61
+  },
+  "jordan": {
+    "system": "constitutional_monarchy",
+    "regime": "hybrid_regime",
+    "democracy_score": 3.52,
+    "happiness_score": 4.7,
+    "conflict_status": "tension",
+    "corruption_rank": 62,
+    "press_freedom_rank": 146,
+    "rule_of_law": 0.52
+  },
+  "kazakhstan": {
+    "system": "presidential_republic",
+    "regime": "authoritarian",
+    "democracy_score": 2.76,
+    "happiness_score": 5.8,
+    "conflict_status": "peace",
+    "corruption_rank": 93,
+    "press_freedom_rank": 134,
+    "rule_of_law": 0.42
+  },
+  "senegal": {
+    "system": "presidential_republic",
+    "regime": "hybrid_regime",
+    "democracy_score": 5.56,
+    "happiness_score": 4.7,
+    "conflict_status": "minor_conflict",
+    "corruption_rank": 72,
+    "press_freedom_rank": 62,
+    "rule_of_law": 0.50
   }
 }

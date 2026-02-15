@@ -1,0 +1,135 @@
+MEDIA SHARE — Step-by-Step Guide to Growing Website Traffic
+==========================================================
+
+Site: https://gpb-world.github.io
+Quiz: https://gpb-world.github.io/quiz.html
+
+
+PHASE 1: REDDIT (Week 1–2)
+===========================
+
+Step 1: Create a Reddit Account
+- Go to reddit.com → Sign Up
+- Use a neutral username (e.g., DataVizFan2026, GlobalDataNerd)
+- Use your Protonmail or a throwaway email
+- Do NOT link any personal social media
+
+Step 2: Build Karma (Day 1–2)
+- Some subreddits block brand new accounts
+- Browse r/dataisbeautiful, r/worldnews, r/economics
+- Leave 10+ genuine comments on other people's posts
+- Upvote content you like
+- Wait 1–2 days before posting your own content
+
+Step 3: Post on r/dataisbeautiful (Day 3)
+- Go to reddit.com/r/dataisbeautiful
+- Click "Create Post" → choose "Link" post type
+- Title: I built an open-data dashboard tracking prosperity across 75 countries — no cookies, no tracking, just data
+- URL: https://gpb-world.github.io
+- Click Post
+- Immediately add a comment with the full body text (see docs/launch-posts.md)
+- Best time: weekday morning US time (= afternoon in Germany)
+
+Step 4: Post on r/geopolitics (Day 5–6)
+- Go to reddit.com/r/geopolitics
+- Click "Create Post" → choose "Text" post type
+- Title: Quiz: How well do you actually know global democracy, GDP, and corruption rankings?
+- Paste the body text from docs/launch-posts.md section 2
+- Click Post
+
+Step 5: After Posting
+- Reply to EVERY comment within the first 2 hours
+- Reddit's algorithm rewards early engagement
+- Be genuine, not promotional — answer questions, accept criticism
+- Never say "check out my site" — just answer naturally
+- If someone asks about your tech stack: "Vanilla JS, no framework, static JSON on GitHub Pages"
+
+
+PHASE 2: HACKER NEWS (Week 2)
+==============================
+
+Step 1: Create an Account
+- Go to news.ycombinator.com
+- Click "create account" (top of page)
+- Choose a neutral username
+
+Step 2: Post as "Show HN" (Day 7–8)
+- Click "submit" in the top menu
+- Title: Show HN: Open-data prosperity barometer – 75 countries, 12 pillars, no tracking
+- URL: https://gpb-world.github.io
+- Leave "text" field empty
+- Click Submit
+- Best time: weekday, 8–10am US Eastern (= 2–4pm German time)
+
+Step 3: After Posting
+- Reply to every comment quickly
+- HN loves the "vanilla JS, no framework" angle
+- Be ready to discuss technical decisions and data sources
+- Accept feedback gracefully
+
+
+PHASE 3: DIRECT SHARING (Ongoing)
+==================================
+
+WhatsApp Groups
+- Share the quiz link: https://gpb-world.github.io/quiz.html
+- Write: "I found this interesting quiz about world affairs — I scored X/10, can you beat me?"
+- The quiz is your best hook — people love competing
+
+Telegram Channels
+- Find channels about data, politics, economics
+- Share with a brief interesting fact from your data
+- Example: "Did you know the gap between full and flawed democracies is surprisingly narrow on economic indicators?"
+
+Discord Servers
+- Look for data science, politics, and economics servers
+- Share in appropriate channels (not spam)
+
+Facebook Groups
+- Find groups about data visualization, world affairs, economics
+- Share with genuine context, not just a link drop
+
+
+PHASE 4: SEO & ORGANIC GROWTH (Month 2+)
+==========================================
+
+Already Done:
+✓ Open Graph meta tags on all pages
+✓ Twitter Card meta tags on all pages
+✓ Descriptive page titles and meta descriptions
+✓ Clean URL structure
+✓ Fast loading (static site, no heavy framework)
+✓ Mobile responsive
+✓ 12 languages (broader reach)
+
+Future Improvements:
+- Submit sitemap to Google Search Console
+- Create a sitemap.xml file
+- Write blog-style content (e.g., "Top 10 Most Democratic Countries in 2026")
+- Add structured data (JSON-LD) for search engines
+- Get backlinks from data/education sites
+
+
+TIMING SUMMARY
+==============
+
+Day 1     — Create Reddit account, start commenting
+Day 2     — Continue commenting, build karma
+Day 3     — Post on r/dataisbeautiful
+Day 5–6   — Post on r/geopolitics
+Day 7–8   — Post on Hacker News
+Day 9+    — Share quiz in WhatsApp/Telegram/Discord groups
+Ongoing   — Reply to all comments, share interesting data findings
+
+
+IMPORTANT RULES
+===============
+
+1. Never post everything on the same day — space it out
+2. Always reply to comments within 2 hours of posting
+3. Be genuine, not salesy — you built something useful, not selling something
+4. Use the quiz as your main hook — it's interactive and shareable
+5. Each platform has different users — adjust your angle
+6. Don't mention monetization (Buy Me a Coffee) in your posts
+7. If something doesn't get traction, don't repost — try a different angle later
+8. Track your GoatCounter stats to see what works: gpb-world.goatcounter.com

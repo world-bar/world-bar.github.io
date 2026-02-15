@@ -1,6 +1,6 @@
 # Global Prosperity Barometer
 
-Open-data civic platform monitoring prosperity indicators across 50 countries.
+Open-data civic platform monitoring prosperity indicators across 75 countries.
 
 ## Structure
 
@@ -21,7 +21,7 @@ js/
   map.js            Leaflet map logic
 
 data/
-  countries.json    50 countries with scores, coords, translated names
+  countries.json    75 countries with scores, coords, translated names
   pillars.json      12 pillar definitions
   lang/
     index.json      Language manifest

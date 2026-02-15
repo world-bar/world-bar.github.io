@@ -70,7 +70,7 @@ def create_main_preview():
 
     # Subtitle stats
     font_sub = ImageFont.truetype(FONT_REG, 28)
-    center_text(draw, '50 Countries  |  12 Pillars  |  Open Data', font_sub, 385, LIGHT_GRAY)
+    center_text(draw, '75 Countries  |  12 Pillars  |  Open Data', font_sub, 385, LIGHT_GRAY)
 
     # Bottom tagline
     font_small = ImageFont.truetype(FONT_REG, 22)
@@ -112,7 +112,7 @@ def create_quiz_preview():
     # Description
     font_desc = ImageFont.truetype(FONT_REG, 24)
     center_text(draw, 'Democracy  |  GDP  |  Corruption  |  Press Freedom', font_desc, 340, LIGHT_GRAY)
-    center_text(draw, '50 countries  |  Real data  |  10 questions', font_desc, 380, (170, 200, 220))
+    center_text(draw, '75 countries  |  Real data  |  10 questions', font_desc, 380, (170, 200, 220))
 
     # Globe
     draw_globe_circle(draw, W // 2, 480, 45)
