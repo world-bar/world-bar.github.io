@@ -857,6 +857,21 @@ body {
     color: rgba(255,255,255,0.45);
 }
 
+.bmc-link {
+    margin-top: 0.75rem;
+}
+
+.bmc-link a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.bmc-link a:hover {
+    color: #ffdd57;
+}
+
 /* ===== Economic Dashboard ===== */
 .econ-metrics {
     display: grid;
