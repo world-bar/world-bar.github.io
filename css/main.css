@@ -417,13 +417,19 @@ body {
     color: var(--un-blue);
     text-decoration: none;
     font-weight: 500;
-    position: sticky;
+    position: fixed;
     top: 56px;
+    left: 0;
+    right: 0;
     background: var(--white);
-    padding: 0.6rem 0;
-    margin-bottom: 0.5rem;
-    z-index: 100;
+    padding: 0.6rem 2rem;
+    margin: 0;
+    z-index: 999;
     border-bottom: 1px solid var(--border-gray);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.back-link + * {
+    margin-top: 3rem;
 }
 
 .scroll-top-btn {
