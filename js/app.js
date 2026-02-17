@@ -1178,7 +1178,7 @@ function renderPillar() {
     : '';
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#pillars" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${pillarIcon} ${pillarName}</h1>
     ${pillar ? `<p class="pillar-desc">${I18n.t(pillar.desc_key)}</p>` : ''}
     ${tabs}
