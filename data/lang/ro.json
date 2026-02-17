@@ -1,5 +1,5 @@
 {
-  "site.title": "Barometrul Prosperității Globale",
+  "site.title": "Barometrul Progresului Mondial",
   "site.subtitle": "2026",
 
   "nav.about": "Despre",
@@ -97,7 +97,7 @@
   "ranking.sources": "Surse de Date",
 
   "about.title": "Despre Proiect",
-  "about.intro": "Barometrul Prosperității Globale (BPG) este o platformă civică cu date deschise care monitorizează și vizualizează indicatorii de prosperitate din țările lumii.",
+  "about.intro": "Barometrul Progresului Mondial (WPB) este o platformă civică cu date deschise care monitorizează și vizualizează indicatorii de prosperitate din țările lumii.",
   "about.mission.title": "Misiunea Noastră",
   "about.mission.text": "Să facem performanța guvernamentală și progresul social transparente, comparabile și accesibile tuturor prin date deschise și vizualizări clare.",
   "about.pillars.title": "Cei 12 Piloni",
@@ -120,7 +120,7 @@
 
   "impressum.title": "Notă Juridică",
   "impressum.provider": "Furnizor",
-  "impressum.provider.name": "Inițiativa GPB World",
+  "impressum.provider.name": "Inițiativa WPB World",
   "impressum.provider.desc": "Platformă civică non-profit pentru transparență",
   "impressum.contact": "Contact",
   "impressum.responsible": "Responsabil",
@@ -160,13 +160,13 @@
   "footer.legal.privacy": "Politica de Confidențialitate",
   "footer.contact": "Contact",
   "footer.email": "E-mail",
-  "footer.copyright": "© 2026 Barometrul Prosperității Globale | Platformă de Date Deschise",
+  "footer.copyright": "© 2026 Barometrul Progresului Mondial | Platformă de Date Deschise",
   "footer.support": "\u2665 Sprijină proiectul",
   "about.support.title": "Sprijină proiectul",
-  "about.support.text": "Global Prosperity Barometer este gratuit, deschis și independent. Dacă îl consideri util, poți sprijini dezvoltarea sa.",
+  "about.support.text": "World Progress Barometer este gratuit, deschis și independent. Dacă îl consideri util, poți sprijini dezvoltarea sa.",
   "share.label": "Distribuie",
-  "share.home_text": "Global Prosperity Barometer — Date deschise despre 125 de țări pe 12 dimensiuni ale prosperității.",
-  "share.country_text": "Global Prosperity Barometer",
+  "share.home_text": "World Progress Barometer — Date deschise despre 125 de țări pe 12 dimensiuni ale prosperității.",
+  "share.country_text": "World Progress Barometer",
 
   "lang.en": "English",
   "lang.ro": "Română",

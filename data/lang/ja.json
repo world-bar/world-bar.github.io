@@ -1,5 +1,5 @@
 {
-  "site.title": "グローバル繁栄バロメーター",
+  "site.title": "世界進歩バロメーター",
   "site.subtitle": "2026",
 
   "nav.about": "概要",
@@ -97,7 +97,7 @@
   "ranking.sources": "データソース",
 
   "about.title": "プロジェクトについて",
-  "about.intro": "グローバル繁栄バロメーター（GPB）は、世界各国の繁栄指標を監視・可視化するオープンデータ市民プラットフォームです。",
+  "about.intro": "世界進歩バロメーター（WPB）は、世界各国の繁栄指標を監視・可視化するオープンデータ市民プラットフォームです。",
   "about.mission.title": "私たちの使命",
   "about.mission.text": "オープンデータと明確な可視化を通じて、政府のパフォーマンスと社会の進歩を透明で比較可能なものにし、誰もがアクセスできるようにすること。",
   "about.pillars.title": "12の柱",
@@ -120,7 +120,7 @@
 
   "impressum.title": "法的事項",
   "impressum.provider": "提供者",
-  "impressum.provider.name": "GPBワールド・イニシアティブ",
+  "impressum.provider.name": "WPBワールド・イニシアティブ",
   "impressum.provider.desc": "非営利の市民透明性プラットフォーム",
   "impressum.contact": "お問い合わせ",
   "impressum.responsible": "責任者",
@@ -160,13 +160,13 @@
   "footer.legal.privacy": "プライバシーポリシー",
   "footer.contact": "お問い合わせ",
   "footer.email": "メール",
-  "footer.copyright": "© 2026 グローバル繁栄バロメーター | オープンデータプラットフォーム",
+  "footer.copyright": "© 2026 世界進歩バロメーター | オープンデータプラットフォーム",
   "footer.support": "\u2665 プロジェクトを支援",
   "about.support.title": "プロジェクトを支援",
-  "about.support.text": "Global Prosperity Barometerは無料でオープン、独立したプラットフォームです。お役に立てましたら、継続的な開発を支援できます。",
+  "about.support.text": "World Progress Barometerは無料でオープン、独立したプラットフォームです。お役に立てましたら、継続的な開発を支援できます。",
   "share.label": "共有",
-  "share.home_text": "Global Prosperity Barometer — 125カ国、12の繁栄指標に関するオープンデータ。",
-  "share.country_text": "Global Prosperity Barometer",
+  "share.home_text": "World Progress Barometer — 125カ国、12の繁栄指標に関するオープンデータ。",
+  "share.country_text": "World Progress Barometer",
 
   "lang.en": "English",
   "lang.ro": "Română",

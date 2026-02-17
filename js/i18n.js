@@ -1,5 +1,5 @@
 /**
- * i18n.js - Translation engine for Global Prosperity Barometer
+ * i18n.js - Translation engine for World Progress Barometer
  * Loads language JSONs, applies translations, handles RTL
  */
 const I18n = (() => {

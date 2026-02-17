@@ -1,5 +1,5 @@
 {
-  "site.title": "Barometro della Prosperità Globale",
+  "site.title": "Barometro Mondiale del Progresso",
   "site.subtitle": "2026",
 
   "nav.about": "Chi siamo",
@@ -97,7 +97,7 @@
   "ranking.sources": "Fonti dei Dati",
 
   "about.title": "Il Progetto",
-  "about.intro": "Il Barometro della Prosperità Globale (BPG) è una piattaforma civica a dati aperti che monitora e visualizza gli indicatori di prosperità nei paesi di tutto il mondo.",
+  "about.intro": "Il Barometro Mondiale del Progresso (WPB) è una piattaforma civica a dati aperti che monitora e visualizza gli indicatori di prosperità nei paesi di tutto il mondo.",
   "about.mission.title": "La Nostra Missione",
   "about.mission.text": "Rendere le prestazioni governative e il progresso sociale trasparenti, comparabili e accessibili a tutti attraverso dati aperti e visualizzazioni chiare.",
   "about.pillars.title": "I 12 Pilastri",
@@ -120,7 +120,7 @@
 
   "impressum.title": "Note Legali",
   "impressum.provider": "Editore",
-  "impressum.provider.name": "Iniziativa GPB World",
+  "impressum.provider.name": "Iniziativa WPB World",
   "impressum.provider.desc": "Piattaforma civica senza scopo di lucro per la trasparenza",
   "impressum.contact": "Contatti",
   "impressum.responsible": "Responsabile",
@@ -160,13 +160,13 @@
   "footer.legal.privacy": "Informativa sulla Privacy",
   "footer.contact": "Contatti",
   "footer.email": "E-mail",
-  "footer.copyright": "© 2026 Barometro della Prosperità Globale | Piattaforma Dati Aperti",
+  "footer.copyright": "© 2026 Barometro Mondiale del Progresso | Piattaforma Dati Aperti",
   "footer.support": "\u2665 Sostieni il progetto",
   "about.support.title": "Sostieni il progetto",
-  "about.support.text": "Il Global Prosperity Barometer è gratuito, aperto e indipendente. Se lo trovi utile, puoi sostenere il suo sviluppo.",
+  "about.support.text": "Il World Progress Barometer è gratuito, aperto e indipendente. Se lo trovi utile, puoi sostenere il suo sviluppo.",
   "share.label": "Condividi",
-  "share.home_text": "Global Prosperity Barometer — Dati aperti su 125 paesi attraverso 12 pilastri di prosperità.",
-  "share.country_text": "Global Prosperity Barometer",
+  "share.home_text": "World Progress Barometer — Dati aperti su 125 paesi attraverso 12 pilastri di prosperità.",
+  "share.country_text": "World Progress Barometer",
 
   "lang.en": "English",
   "lang.ro": "Română",

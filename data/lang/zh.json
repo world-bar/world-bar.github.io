@@ -1,5 +1,5 @@
 {
-  "site.title": "全球繁荣指标",
+  "site.title": "世界进步晴雨表",
   "site.subtitle": "2026",
 
   "nav.about": "关于",
@@ -97,7 +97,7 @@
   "ranking.sources": "数据来源",
 
   "about.title": "关于本项目",
-  "about.intro": "全球繁荣指标（GPB）是一个开放数据公民平台，用于监测和可视化全球各国的繁荣指标。",
+  "about.intro": "世界进步晴雨表（WPB）是一个开放数据公民平台，用于监测和可视化全球各国的繁荣指标。",
   "about.mission.title": "我们的使命",
   "about.mission.text": "通过开放数据和清晰的可视化，使政府绩效和社会进步变得透明、可比较，并让每个人都能获取。",
   "about.pillars.title": "十二大支柱",
@@ -120,7 +120,7 @@
 
   "impressum.title": "法律声明",
   "impressum.provider": "提供方",
-  "impressum.provider.name": "GPB全球倡议",
+  "impressum.provider.name": "WPB全球倡议",
   "impressum.provider.desc": "非营利公民透明度平台",
   "impressum.contact": "联系方式",
   "impressum.responsible": "负责人",
@@ -160,13 +160,13 @@
   "footer.legal.privacy": "隐私政策",
   "footer.contact": "联系我们",
   "footer.email": "电子邮件",
-  "footer.copyright": "© 2026 全球繁荣指标 | 开放数据平台",
+  "footer.copyright": "© 2026 世界进步晴雨表 | 开放数据平台",
   "footer.support": "\u2665 支持本项目",
   "about.support.title": "支持本项目",
-  "about.support.text": "全球繁荣晴雨表是免费、开放和独立的。如果您觉得有用，可以支持其持续发展。",
+  "about.support.text": "世界进步晴雨表是免费、开放和独立的。如果您觉得有用，可以支持其持续发展。",
   "share.label": "分享",
-  "share.home_text": "全球繁荣晴雨表 — 125个国家12个繁荣支柱的开放数据。",
-  "share.country_text": "全球繁荣晴雨表",
+  "share.home_text": "世界进步晴雨表 — 125个国家12个繁荣支柱的开放数据。",
+  "share.country_text": "世界进步晴雨表",
 
   "lang.en": "English",
   "lang.ro": "Română",

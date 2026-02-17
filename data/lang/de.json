@@ -1,5 +1,5 @@
 {
-  "site.title": "Globales Wohlstandsbarometer",
+  "site.title": "Welt-Fortschrittsbarometer",
   "site.subtitle": "2026",
 
   "nav.about": "Über uns",
@@ -97,7 +97,7 @@
   "ranking.sources": "Datenquellen",
 
   "about.title": "Über das Projekt",
-  "about.intro": "Das Globale Wohlstandsbarometer (GWB) ist eine offene Bürgerplattform, die Wohlstandsindikatoren in Ländern weltweit überwacht und visualisiert.",
+  "about.intro": "Das Welt-Fortschrittsbarometer (WPB) ist eine offene Bürgerplattform, die Wohlstandsindikatoren in Ländern weltweit überwacht und visualisiert.",
   "about.mission.title": "Unsere Mission",
   "about.mission.text": "Regierungsleistung und gesellschaftlichen Fortschritt durch offene Daten und klare Visualisierung transparent, vergleichbar und für alle zugänglich zu machen.",
   "about.pillars.title": "Die 12 Säulen",
@@ -120,7 +120,7 @@
 
   "impressum.title": "Impressum",
   "impressum.provider": "Anbieter",
-  "impressum.provider.name": "GPB World Initiative",
+  "impressum.provider.name": "WPB World Initiative",
   "impressum.provider.desc": "Gemeinnützige Plattform für bürgerschaftliche Transparenz",
   "impressum.contact": "Kontakt",
   "impressum.responsible": "Verantwortlich",
@@ -160,13 +160,13 @@
   "footer.legal.privacy": "Datenschutzerklärung",
   "footer.contact": "Kontakt",
   "footer.email": "E-Mail",
-  "footer.copyright": "© 2026 Globales Wohlstandsbarometer | Offene Datenplattform",
+  "footer.copyright": "© 2026 Welt-Fortschrittsbarometer | Offene Datenplattform",
   "footer.support": "\u2665 Projekt unterstützen",
   "about.support.title": "Projekt unterstützen",
-  "about.support.text": "Das Global Prosperity Barometer ist kostenlos, offen und unabhängig. Wenn Sie es nützlich finden, können Sie die Weiterentwicklung unterstützen.",
+  "about.support.text": "Das World Progress Barometer ist kostenlos, offen und unabhängig. Wenn Sie es nützlich finden, können Sie die Weiterentwicklung unterstützen.",
   "share.label": "Teilen",
-  "share.home_text": "Global Prosperity Barometer — Offene Daten zu 125 Ländern in 12 Dimensionen des Wohlstands.",
-  "share.country_text": "Global Prosperity Barometer",
+  "share.home_text": "World Progress Barometer — Offene Daten zu 125 Ländern in 12 Dimensionen des Wohlstands.",
+  "share.country_text": "World Progress Barometer",
 
   "lang.en": "English",
   "lang.ro": "Română",

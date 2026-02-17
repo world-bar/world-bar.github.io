@@ -1,5 +1,5 @@
 /**
- * app.js - Main renderer for Global Prosperity Barometer
+ * app.js - Main renderer for World Progress Barometer
  * Detects page, renders dynamic content, orchestrates data + i18n
  */
 document.addEventListener('DOMContentLoaded', async () => {
@@ -521,7 +521,7 @@ function renderProsperityPage() {
     </tr>`;
   }).join('');
 
-  document.title = `${I18n.t('overview.top_countries')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('overview.top_countries')} - World Progress Barometer`;
 
   container.innerHTML = `
     <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
@@ -593,7 +593,7 @@ function renderTradePage() {
     </tr>`;
   }).join('');
 
-  document.title = `${I18n.t('trade.global_title')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('trade.global_title')} - World Progress Barometer`;
 
   container.innerHTML = `
     <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
@@ -655,7 +655,7 @@ function renderPressFreedomPage() {
     </tr>`;
   }).join('');
 
-  document.title = `${I18n.t('overview.top_press')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('overview.top_press')} - World Progress Barometer`;
 
   container.innerHTML = `
     <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
@@ -717,7 +717,7 @@ function renderLifeSatisfactionPage() {
     </tr>`;
   }).join('');
 
-  document.title = `${I18n.t('overview.top_satisfaction')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('overview.top_satisfaction')} - World Progress Barometer`;
 
   container.innerHTML = `
     <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
@@ -777,7 +777,7 @@ function renderRuleOfLawPage() {
     </tr>`;
   }).join('');
 
-  document.title = `${I18n.t('overview.top_rule_of_law')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('overview.top_rule_of_law')} - World Progress Barometer`;
 
   container.innerHTML = `
     <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
@@ -851,7 +851,7 @@ function renderCountry() {
   }).join('');
 
   const name = I18n.getCountryName(country);
-  document.title = `${name} - Global Prosperity Barometer`;
+  document.title = `${name} - World Progress Barometer`;
 
   const pol = Data.getPolitics(id);
   let govHtml = '';
@@ -1150,7 +1150,7 @@ function renderPillar() {
 
   const pillarName = pillar ? I18n.t(pillar.name_key) : I18n.t('ranking.all_pillars');
   const pillarIcon = pillar ? pillar.icon : '\ud83c\udf10';
-  document.title = `${pillarName} - Global Prosperity Barometer`;
+  document.title = `${pillarName} - World Progress Barometer`;
 
   const ranking = Data.getRanking(id);
 
@@ -1383,7 +1383,7 @@ function renderQuiz() {
   const container = document.getElementById('quiz-content');
   if (!container) return;
 
-  document.title = `${I18n.t('quiz.title')} - Global Prosperity Barometer`;
+  document.title = `${I18n.t('quiz.title')} - World Progress Barometer`;
 
   // If quiz is in progress and we're just re-rendering for language change, re-render current state
   if (_quizState && _quizState.started) {
