@@ -9,13 +9,13 @@
   "nav.country_search": "Pesquisar países...",
   "nav.compare": "Comparar",
 
-  "hero.title": "Monitoramento da Prosperidade Global em Tempo Real",
+  "hero.title": "Monitoramento da Prosperidade Mundial em Tempo Real",
   "hero.subtitle": "Análise abrangente de 12 pilares fundamentais em 125 países e em expansão, acompanhando o progresso rumo ao desenvolvimento sustentável e ao bem-estar humano",
 
-  "overview.title": "Panorama Global",
+  "overview.title": "Panorama Mundial",
   "overview.subtitle": "Indicadores-chave em fevereiro de 2026",
 
-  "rankings.title": "Classificações Globais",
+  "rankings.title": "Classificações Mundiais",
   "rankings.subtitle": "Principais países por indicadores-chave",
 
   "pillars.title": "Pilares da Prosperidade",
@@ -37,7 +37,7 @@
   "overview.avg_score": "Pontuação média",
   "overview.best_score": "Melhor pontuação",
   "overview.regime_type": "Tipo de regime",
-  "pillars.global_avg": "Média Global",
+  "pillars.global_avg": "Média Mundial",
 
   "pillar.governance": "Governança",
   "pillar.governance.desc": "Democracia, estado de direito e eficácia institucional",
@@ -64,8 +64,8 @@
   "pillar.housing": "Habitação e Des. Urbano",
   "pillar.housing.desc": "Acessibilidade habitacional, planejamento urbano e habitabilidade",
 
-  "map.section_title": "Mapa interativo da prosperidade global",
-  "map.title": "Índice de Prosperidade Global",
+  "map.section_title": "Mapa interativo da prosperidade mundial",
+  "map.title": "Índice de Prosperidade Mundial",
   "map.interactive": "Mapa Interativo",
   "map.click_details": "Clique nos países para ver detalhes",
   "map.data_date": "Dados de fevereiro de 2026",
@@ -82,7 +82,7 @@
 
   "country.title": "Perfil do País",
   "country.overall": "Pontuação Geral",
-  "country.rank": "Classificação Global",
+  "country.rank": "Classificação Mundial",
   "country.pillar_scores": "Pontuações por Pilar",
   "country.back": "Voltar ao panorama",
   "country.not_found": "País não encontrado",
@@ -209,14 +209,14 @@
   "econ.exp.debt_service": "Serviço da Dívida",
   "econ.exp.other": "Outros",
 
-  "global.econ_title": "Economia Global",
+  "global.econ_title": "Economia Mundial",
   "global.gdp_total": "PIB Mundial",
   "global.avg_gdp_capita": "PIB/Capita Méd.",
   "global.avg_inflation": "Inflação Méd.",
   "global.avg_unemployment": "Desemprego Méd.",
   "global.avg_debt": "Dívida Pública Méd.",
 
-  "pol.title": "Governança Global e Sistemas Políticos",
+  "pol.title": "Governança Mundial e Sistemas Políticos",
   "pol.avg_democracy": "Pontuação Méd. de Democracia",
   "pol.avg_corruption": "Classificação Méd. de Corrupção",
   "pol.avg_press": "Classificação Méd. de Liberdade de Imprensa",
@@ -257,7 +257,7 @@
   "trade.balance": "Balança Comercial",
   "trade.openness": "Abertura Comercial (% PIB)",
   "trade.top_exports": "Principais Exportações",
-  "trade.global_title": "Panorama do Comércio Global",
+  "trade.global_title": "Panorama do Comércio Mundial",
   "trade.total_exports": "Exportações Mundiais",
   "trade.total_imports": "Importações Mundiais",
   "trade.avg_openness": "Abertura Comercial Méd.",
@@ -293,7 +293,7 @@
 
   "nav.quiz": "Quiz",
   "quiz.title": "Quiz de Prosperidade",
-  "quiz.subtitle": "Teste seus conhecimentos sobre a prosperidade global",
+  "quiz.subtitle": "Teste seus conhecimentos sobre a prosperidade mundial",
   "quiz.start": "Iniciar o quiz",
   "quiz.question_of": "Pergunta {0} de {1}",
   "quiz.score": "Pontuação: {0}",
@@ -309,7 +309,7 @@
   "quiz.play_again": "Jogar novamente",
   "quiz.share": "Compartilhar resultado",
   "quiz.copied": "Copiado!",
-  "quiz.share_text": "Acertei {0}/10 no Quiz de Prosperidade Global!",
+  "quiz.share_text": "Acertei {0}/10 no Quiz de Prosperidade Mundial!",
   "quiz.q.highest_democracy": "Qual país tem a maior pontuação de democracia?",
   "quiz.q.lowest_democracy": "Qual país tem a menor pontuação de democracia?",
   "quiz.q.gov_system": "Que tipo de governo tem {0}?",

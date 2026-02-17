@@ -9,13 +9,13 @@
   "nav.country_search": "Search countries...",
   "nav.compare": "Compare",
 
-  "hero.title": "Monitoring Global Prosperity in Real-Time",
+  "hero.title": "Monitoring World Progress in Real-Time",
   "hero.subtitle": "Comprehensive analysis of 12 fundamental pillars across 125 countries and growing, tracking progress toward sustainable development and human wellbeing",
 
-  "overview.title": "Global Overview",
+  "overview.title": "World Overview",
   "overview.subtitle": "Key indicators as of February 2026",
 
-  "rankings.title": "Global Rankings",
+  "rankings.title": "World Rankings",
   "rankings.subtitle": "Top countries by key indicators",
 
   "pillars.title": "Pillars of Prosperity",
@@ -37,7 +37,7 @@
   "overview.avg_score": "Avg. Score",
   "overview.best_score": "Best Score",
   "overview.regime_type": "Regime Type",
-  "pillars.global_avg": "Global Average",
+  "pillars.global_avg": "World Average",
 
   "pillar.governance": "Governance",
   "pillar.governance.desc": "Democracy, rule of law, and institutional effectiveness",
@@ -64,8 +64,8 @@
   "pillar.housing": "Housing & Urban Dev.",
   "pillar.housing.desc": "Housing affordability, urban planning, and livability",
 
-  "map.section_title": "Interactive Map of Global Prosperity",
-  "map.title": "Global Prosperity Index",
+  "map.section_title": "Interactive Map of World Progress",
+  "map.title": "World Progress Index",
   "map.interactive": "Interactive Map",
   "map.click_details": "Click on countries for details",
   "map.data_date": "Data as of February 2026",
@@ -82,7 +82,7 @@
 
   "country.title": "Country Profile",
   "country.overall": "Overall Score",
-  "country.rank": "Global Rank",
+  "country.rank": "World Rank",
   "country.pillar_scores": "Pillar Scores",
   "country.back": "Back to overview",
   "country.not_found": "Country not found",
@@ -211,14 +211,14 @@
   "econ.exp.debt_service": "Debt Service",
   "econ.exp.other": "Other",
 
-  "global.econ_title": "Global Economics",
+  "global.econ_title": "World Economics",
   "global.gdp_total": "World GDP",
   "global.avg_gdp_capita": "Avg. GDP/Capita",
   "global.avg_inflation": "Avg. Inflation",
   "global.avg_unemployment": "Avg. Unemployment",
   "global.avg_debt": "Avg. Public Debt",
 
-  "pol.title": "Global Governance & Political Systems",
+  "pol.title": "World Governance & Political Systems",
   "pol.avg_democracy": "Avg. Democracy Score",
   "pol.avg_corruption": "Avg. Corruption Rank",
   "pol.avg_press": "Avg. Press Freedom Rank",
@@ -261,7 +261,7 @@
   "trade.balance": "Trade Balance",
   "trade.openness": "Trade Openness (% GDP)",
   "trade.top_exports": "Top Exports",
-  "trade.global_title": "Global Trade Overview",
+  "trade.global_title": "World Trade Overview",
   "trade.total_exports": "World Exports",
   "trade.total_imports": "World Imports",
   "trade.avg_openness": "Avg. Trade Openness",
@@ -313,7 +313,7 @@
   "quiz.play_again": "Play Again",
   "quiz.share": "Share Result",
   "quiz.copied": "Copied!",
-  "quiz.share_text": "I scored {0}/10 on the Global Prosperity Quiz!",
+  "quiz.share_text": "I scored {0}/10 on the World Progress Quiz!",
   "quiz.q.highest_democracy": "Which country has the highest democracy score?",
   "quiz.q.lowest_democracy": "Which country has the lowest democracy score?",
   "quiz.q.gov_system": "What type of government does {0} have?",

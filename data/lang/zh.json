@@ -9,13 +9,13 @@
   "nav.country_search": "搜索国家...",
   "nav.compare": "比较",
 
-  "hero.title": "实时监测全球繁荣状况",
+  "hero.title": "实时监测世界繁荣状况",
   "hero.subtitle": "对125个国家且持续增加的12个基本支柱进行综合分析，追踪可持续发展和人类福祉的进展",
 
-  "overview.title": "全球概览",
+  "overview.title": "世界概览",
   "overview.subtitle": "截至2026年2月的关键指标",
 
-  "rankings.title": "全球排名",
+  "rankings.title": "世界排名",
   "rankings.subtitle": "按关键指标排名的领先国家",
 
   "pillars.title": "繁荣支柱",
@@ -37,7 +37,7 @@
   "overview.avg_score": "平均分数",
   "overview.best_score": "最高分数",
   "overview.regime_type": "政权类型",
-  "pillars.global_avg": "全球平均",
+  "pillars.global_avg": "世界平均",
 
   "pillar.governance": "治理",
   "pillar.governance.desc": "民主、法治和制度效能",
@@ -64,8 +64,8 @@
   "pillar.housing": "住房与城市发展",
   "pillar.housing.desc": "住房可负担性、城市规划与宜居性",
 
-  "map.section_title": "全球繁荣互动地图",
-  "map.title": "全球繁荣指数",
+  "map.section_title": "世界繁荣互动地图",
+  "map.title": "世界繁荣指数",
   "map.interactive": "交互式地图",
   "map.click_details": "点击国家查看详情",
   "map.data_date": "数据截至2026年2月",
@@ -82,7 +82,7 @@
 
   "country.title": "国家概况",
   "country.overall": "总体评分",
-  "country.rank": "全球排名",
+  "country.rank": "世界排名",
   "country.pillar_scores": "支柱评分",
   "country.back": "返回概览",
   "country.not_found": "未找到该国家",
@@ -209,14 +209,14 @@
   "econ.exp.debt_service": "债务偿还",
   "econ.exp.other": "其他",
 
-  "global.econ_title": "全球经济",
+  "global.econ_title": "世界经济",
   "global.gdp_total": "世界GDP",
   "global.avg_gdp_capita": "平均人均GDP",
   "global.avg_inflation": "平均通胀率",
   "global.avg_unemployment": "平均失业率",
   "global.avg_debt": "平均公共债务",
 
-  "pol.title": "全球治理与政治体制",
+  "pol.title": "世界治理与政治体制",
   "pol.avg_democracy": "平均民主指数",
   "pol.avg_corruption": "平均腐败排名",
   "pol.avg_press": "平均新闻自由排名",
@@ -257,7 +257,7 @@
   "trade.balance": "贸易差额",
   "trade.openness": "贸易开放度 (% GDP)",
   "trade.top_exports": "主要出口商品",
-  "trade.global_title": "全球贸易概览",
+  "trade.global_title": "世界贸易概览",
   "trade.total_exports": "世界出口总额",
   "trade.total_imports": "世界进口总额",
   "trade.avg_openness": "平均贸易开放度",
@@ -293,7 +293,7 @@
 
   "nav.quiz": "知识问答",
   "quiz.title": "繁荣知识问答",
-  "quiz.subtitle": "测试你对全球繁荣的了解",
+  "quiz.subtitle": "测试你对世界繁荣的了解",
   "quiz.start": "开始答题",
   "quiz.question_of": "第 {0} 题，共 {1} 题",
   "quiz.score": "得分：{0}",
@@ -309,7 +309,7 @@
   "quiz.play_again": "再玩一次",
   "quiz.share": "分享成绩",
   "quiz.copied": "已复制！",
-  "quiz.share_text": "我在全球繁荣知识问答中获得了 {0}/10 分！",
+  "quiz.share_text": "我在世界繁荣知识问答中获得了 {0}/10 分！",
   "quiz.q.highest_democracy": "哪个国家的民主指数最高？",
   "quiz.q.lowest_democracy": "哪个国家的民主指数最低？",
   "quiz.q.gov_system": "{0}实行什么类型的政府体制？",

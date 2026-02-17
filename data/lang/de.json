@@ -9,13 +9,13 @@
   "nav.country_search": "Länder suchen...",
   "nav.compare": "Vergleichen",
 
-  "hero.title": "Globalen Wohlstand in Echtzeit überwachen",
+  "hero.title": "Weltweiten Wohlstand in Echtzeit überwachen",
   "hero.subtitle": "Umfassende Analyse von 12 grundlegenden Säulen in 125 Ländern und wachsend, die den Fortschritt in Richtung nachhaltiger Entwicklung und menschlichem Wohlbefinden verfolgt",
 
-  "overview.title": "Globale Übersicht",
+  "overview.title": "Weltweite Übersicht",
   "overview.subtitle": "Schlüsselindikatoren, Stand Februar 2026",
 
-  "rankings.title": "Globale Ranglisten",
+  "rankings.title": "Weltweite Ranglisten",
   "rankings.subtitle": "Top-Länder nach Schlüsselindikatoren",
 
   "pillars.title": "Säulen des Wohlstands",
@@ -37,7 +37,7 @@
   "overview.avg_score": "Durchschn. Wert",
   "overview.best_score": "Bester Wert",
   "overview.regime_type": "Regimetyp",
-  "pillars.global_avg": "Globaler Durchschnitt",
+  "pillars.global_avg": "Weltweiter Durchschnitt",
 
   "pillar.governance": "Regierungsführung",
   "pillar.governance.desc": "Demokratie, Rechtsstaatlichkeit und institutionelle Wirksamkeit",
@@ -64,8 +64,8 @@
   "pillar.housing": "Wohnen & Stadtentwicklung",
   "pillar.housing.desc": "Bezahlbares Wohnen, Stadtplanung und Lebensqualität",
 
-  "map.section_title": "Interaktive Karte der globalen Prosperität",
-  "map.title": "Globaler Wohlstandsindex",
+  "map.section_title": "Interaktive Karte der weltweiten Prosperität",
+  "map.title": "Welt-Wohlstandsindex",
   "map.interactive": "Interaktive Karte",
   "map.click_details": "Klicken Sie auf Länder für Details",
   "map.data_date": "Daten vom Februar 2026",
@@ -82,7 +82,7 @@
 
   "country.title": "Länderprofil",
   "country.overall": "Gesamtwert",
-  "country.rank": "Globaler Rang",
+  "country.rank": "Weltweiter Rang",
   "country.pillar_scores": "Säulenwerte",
   "country.back": "Zurück zur Übersicht",
   "country.not_found": "Land nicht gefunden",
@@ -209,14 +209,14 @@
   "econ.exp.debt_service": "Schuldendienst",
   "econ.exp.other": "Sonstiges",
 
-  "global.econ_title": "Globale Wirtschaft",
+  "global.econ_title": "Weltwirtschaft",
   "global.gdp_total": "Welt-BIP",
   "global.avg_gdp_capita": "Durchschn. BIP/Kopf",
   "global.avg_inflation": "Durchschn. Inflation",
   "global.avg_unemployment": "Durchschn. Arbeitslosigkeit",
   "global.avg_debt": "Durchschn. Staatsverschuldung",
 
-  "pol.title": "Globale Regierungsführung und politische Systeme",
+  "pol.title": "Weltweite Regierungsführung und politische Systeme",
   "pol.avg_democracy": "Durchschn. Demokratie-Index",
   "pol.avg_corruption": "Durchschn. Korruptionsrang",
   "pol.avg_press": "Durchschn. Pressefreiheitsrang",
@@ -257,7 +257,7 @@
   "trade.balance": "Handelsbilanz",
   "trade.openness": "Handelsoffenheit (% BIP)",
   "trade.top_exports": "Wichtigste Exportgüter",
-  "trade.global_title": "Globaler Handelsüberblick",
+  "trade.global_title": "Weltweiter Handelsüberblick",
   "trade.total_exports": "Weltexporte",
   "trade.total_imports": "Weltimporte",
   "trade.avg_openness": "Durchschn. Handelsoffenheit",
@@ -293,7 +293,7 @@
 
   "nav.quiz": "Quiz",
   "quiz.title": "Wohlstands-Quiz",
-  "quiz.subtitle": "Testen Sie Ihr Wissen über globalen Wohlstand",
+  "quiz.subtitle": "Testen Sie Ihr Wissen über weltweiten Wohlstand",
   "quiz.start": "Quiz starten",
   "quiz.question_of": "Frage {0} von {1}",
   "quiz.score": "Punktzahl: {0}",
@@ -309,7 +309,7 @@
   "quiz.play_again": "Nochmal spielen",
   "quiz.share": "Ergebnis teilen",
   "quiz.copied": "Kopiert!",
-  "quiz.share_text": "Ich habe {0}/10 beim Globalen Wohlstands-Quiz erreicht!",
+  "quiz.share_text": "Ich habe {0}/10 beim Welt-Wohlstands-Quiz erreicht!",
   "quiz.q.highest_democracy": "Welches Land hat den höchsten Demokratiewert?",
   "quiz.q.lowest_democracy": "Welches Land hat den niedrigsten Demokratiewert?",
   "quiz.q.gov_system": "Welche Regierungsform hat {0}?",

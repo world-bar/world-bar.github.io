@@ -12,7 +12,7 @@
   "hero.title": "世界の繁栄をリアルタイムで監視",
   "hero.subtitle": "125カ国以上にわたる12の基本的な柱を包括的に分析し、持続可能な開発と人間の福祉に向けた進捗を追跡します",
 
-  "overview.title": "グローバル概要",
+  "overview.title": "世界概要",
   "overview.subtitle": "2026年2月時点の主要指標",
 
   "rankings.title": "世界ランキング",
@@ -64,8 +64,8 @@
   "pillar.housing": "住宅・都市開発",
   "pillar.housing.desc": "住宅の手頃さ、都市計画、住みやすさ",
 
-  "map.section_title": "グローバル繁栄インタラクティブマップ",
-  "map.title": "グローバル繁栄指数",
+  "map.section_title": "世界繁栄インタラクティブマップ",
+  "map.title": "世界繁栄指数",
   "map.interactive": "インタラクティブマップ",
   "map.click_details": "国をクリックして詳細を表示",
   "map.data_date": "2026年2月時点のデータ",
@@ -216,7 +216,7 @@
   "global.avg_unemployment": "平均失業率",
   "global.avg_debt": "平均公的債務",
 
-  "pol.title": "グローバル・ガバナンスと政治体制",
+  "pol.title": "世界のガバナンスと政治体制",
   "pol.avg_democracy": "平均民主主義スコア",
   "pol.avg_corruption": "平均腐敗順位",
   "pol.avg_press": "平均報道自由度順位",
@@ -309,7 +309,7 @@
   "quiz.play_again": "もう一度プレイ",
   "quiz.share": "結果を共有",
   "quiz.copied": "コピーしました！",
-  "quiz.share_text": "グローバル繁栄クイズで{0}/10点を獲得しました！",
+  "quiz.share_text": "世界繁栄クイズで{0}/10点を獲得しました！",
   "quiz.q.highest_democracy": "民主主義スコアが最も高い国はどこですか？",
   "quiz.q.lowest_democracy": "民主主義スコアが最も低い国はどこですか？",
   "quiz.q.gov_system": "{0}の政治体制は何ですか？",

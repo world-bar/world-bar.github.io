@@ -81,7 +81,7 @@
   "map.popup.details": "Voir les détails",
 
   "country.title": "Profil du Pays",
-  "country.overall": "Score Global",
+  "country.overall": "Score Mondial",
   "country.rank": "Classement Mondial",
   "country.pillar_scores": "Scores par Pilier",
   "country.back": "Retour à l'aperçu",
@@ -92,7 +92,7 @@
   "ranking.rank": "Rang",
   "ranking.country": "Pays",
   "ranking.score": "Score",
-  "ranking.all_pillars": "Global",
+  "ranking.all_pillars": "Mondial",
   "ranking.back": "Retour à l'aperçu",
   "ranking.sources": "Sources de Données",
 

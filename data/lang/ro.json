@@ -9,13 +9,13 @@
   "nav.country_search": "Caută țări...",
   "nav.compare": "Compară",
 
-  "hero.title": "Monitorizarea Prosperității Globale în Timp Real",
+  "hero.title": "Monitorizarea Prosperității Mondiale în Timp Real",
   "hero.subtitle": "Analiză cuprinzătoare a 12 piloni fundamentali în 125 de țări și în creștere, urmărind progresul către dezvoltare durabilă și bunăstare umană",
 
-  "overview.title": "Prezentare Globală",
+  "overview.title": "Prezentare Mondială",
   "overview.subtitle": "Indicatori cheie din februarie 2026",
 
-  "rankings.title": "Clasamente Globale",
+  "rankings.title": "Clasamente Mondiale",
   "rankings.subtitle": "Topul țărilor după indicatori cheie",
 
   "pillars.title": "Pilonii Prosperității",
@@ -37,7 +37,7 @@
   "overview.avg_score": "Scor mediu",
   "overview.best_score": "Cel mai bun scor",
   "overview.regime_type": "Tip de regim",
-  "pillars.global_avg": "Media Globală",
+  "pillars.global_avg": "Media Mondială",
 
   "pillar.governance": "Guvernanță",
   "pillar.governance.desc": "Democrație, statul de drept și eficiența instituțională",
@@ -64,8 +64,8 @@
   "pillar.housing": "Locuințe și Dezv. Urbană",
   "pillar.housing.desc": "Accesibilitatea locuințelor, planificare urbană și calitatea vieții",
 
-  "map.section_title": "Hartă interactivă a prosperității globale",
-  "map.title": "Indicele Prosperității Globale",
+  "map.section_title": "Hartă interactivă a prosperității mondiale",
+  "map.title": "Indicele Prosperității Mondiale",
   "map.interactive": "Hartă Interactivă",
   "map.click_details": "Faceți clic pe țări pentru detalii",
   "map.data_date": "Date din februarie 2026",
@@ -82,7 +82,7 @@
 
   "country.title": "Profil de Țară",
   "country.overall": "Scor General",
-  "country.rank": "Clasament Global",
+  "country.rank": "Clasament Mondial",
   "country.pillar_scores": "Scoruri pe Piloni",
   "country.back": "Înapoi la prezentare",
   "country.not_found": "Țara nu a fost găsită",
@@ -209,14 +209,14 @@
   "econ.exp.debt_service": "Serviciul Datoriei",
   "econ.exp.other": "Altele",
 
-  "global.econ_title": "Economia Globală",
+  "global.econ_title": "Economia Mondială",
   "global.gdp_total": "PIB Mondial",
   "global.avg_gdp_capita": "PIB/Locuitor Mediu",
   "global.avg_inflation": "Inflație Medie",
   "global.avg_unemployment": "Șomaj Mediu",
   "global.avg_debt": "Datorie Publică Medie",
 
-  "pol.title": "Guvernanță Globală și Sisteme Politice",
+  "pol.title": "Guvernanță Mondială și Sisteme Politice",
   "pol.avg_democracy": "Scor Mediu al Democrației",
   "pol.avg_corruption": "Clasament Mediu al Corupției",
   "pol.avg_press": "Clasament Mediu al Libertății Presei",
@@ -257,7 +257,7 @@
   "trade.balance": "Balanța Comercială",
   "trade.openness": "Deschidere Comercială (% PIB)",
   "trade.top_exports": "Principalele Exporturi",
-  "trade.global_title": "Prezentare Generală a Comerțului Global",
+  "trade.global_title": "Prezentare Generală a Comerțului Mondial",
   "trade.total_exports": "Exporturi Mondiale",
   "trade.total_imports": "Importuri Mondiale",
   "trade.avg_openness": "Deschidere Comercială Medie",
@@ -293,7 +293,7 @@
 
   "nav.quiz": "Quiz",
   "quiz.title": "Quiz despre Prosperitate",
-  "quiz.subtitle": "Testează-ți cunoștințele despre prosperitatea globală",
+  "quiz.subtitle": "Testează-ți cunoștințele despre prosperitatea mondială",
   "quiz.start": "Începe quizul",
   "quiz.question_of": "Întrebarea {0} din {1}",
   "quiz.score": "Scor: {0}",
@@ -309,7 +309,7 @@
   "quiz.play_again": "Joacă din nou",
   "quiz.share": "Distribuie rezultatul",
   "quiz.copied": "Copiat!",
-  "quiz.share_text": "Am obținut {0}/10 la Quizul de Prosperitate Globală!",
+  "quiz.share_text": "Am obținut {0}/10 la Quizul de Prosperitate Mondială!",
   "quiz.q.highest_democracy": "Care țară are cel mai mare scor al democrației?",
   "quiz.q.lowest_democracy": "Care țară are cel mai mic scor al democrației?",
   "quiz.q.gov_system": "Ce tip de guvernare are {0}?",
