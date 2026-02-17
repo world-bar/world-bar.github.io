@@ -497,7 +497,7 @@ function renderProsperityPage() {
   document.title = `${I18n.t('overview.top_countries')} - Global Prosperity Barometer`;
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${I18n.t('overview.top_countries')}</h1>
     <div class="trade-tile-stats" style="margin:1.5rem 0">${statsHtml}</div>
     <table class="ranking-table">
@@ -569,7 +569,7 @@ function renderTradePage() {
   document.title = `${I18n.t('trade.global_title')} - Global Prosperity Barometer`;
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${I18n.t('trade.global_title')}</h1>
     <div class="trade-tile-stats" style="margin:1.5rem 0">${statsHtml}</div>
     <table class="ranking-table">
@@ -631,7 +631,7 @@ function renderPressFreedomPage() {
   document.title = `${I18n.t('overview.top_press')} - Global Prosperity Barometer`;
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${I18n.t('overview.top_press')}</h1>
     <div class="trade-tile-stats" style="margin:1.5rem 0">${statsHtml}</div>
     <table class="ranking-table">
@@ -693,7 +693,7 @@ function renderLifeSatisfactionPage() {
   document.title = `${I18n.t('overview.top_satisfaction')} - Global Prosperity Barometer`;
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${I18n.t('overview.top_satisfaction')}</h1>
     <div class="trade-tile-stats" style="margin:1.5rem 0">${statsHtml}</div>
     <table class="ranking-table">
@@ -753,7 +753,7 @@ function renderRuleOfLawPage() {
   document.title = `${I18n.t('overview.top_rule_of_law')} - Global Prosperity Barometer`;
 
   container.innerHTML = `
-    <a href="index.html" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
+    <a href="index.html#overview" class="back-link">&larr; ${I18n.t('ranking.back')}</a>
     <h1>${I18n.t('overview.top_rule_of_law')}</h1>
     <div class="trade-tile-stats" style="margin:1.5rem 0">${statsHtml}</div>
     <table class="ranking-table">
