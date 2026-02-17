@@ -413,11 +413,16 @@ body {
 }
 
 .back-link {
-    display: inline-block;
+    display: block;
     color: var(--un-blue);
     text-decoration: none;
-    margin-bottom: 1.5rem;
     font-weight: 500;
+    position: sticky;
+    top: 60px;
+    background: var(--white);
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+    z-index: 100;
 }
 
 .back-link:hover {
