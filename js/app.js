@@ -320,22 +320,24 @@ function renderGlobalEconBar() {
   function fmtK(v) { return v >= 1000 ? `$${(v/1000).toFixed(1)}K` : `$${v}`; }
 
   const items = [
-    { key: 'global.gdp_total', value: fmtT(totalGdp), icon: '🌍' },
-    { key: 'global.avg_gdp_capita', value: fmtK(avgGdpCap), icon: '👤' },
-    { key: 'global.avg_inflation', value: `${avgInflation}%`, icon: '📈' },
-    { key: 'global.avg_unemployment', value: `${avgUnemployment}%`, icon: '💼' },
-    { key: 'global.avg_debt', value: `${avgDebt}%`, icon: '🏦' }
+    { key: 'global.gdp_total', value: fmtT(totalGdp), icon: '\uD83C\uDF0D' },
+    { key: 'global.avg_gdp_capita', value: fmtK(avgGdpCap), icon: '\uD83D\uDC64' },
+    { key: 'global.avg_inflation', value: `${avgInflation}%`, icon: '\uD83D\uDCC8' },
+    { key: 'global.avg_unemployment', value: `${avgUnemployment}%`, icon: '\uD83D\uDCBC' },
+    { key: 'global.avg_debt', value: `${avgDebt}%`, icon: '\uD83C\uDFE6' }
   ];
 
   container.innerHTML = `
-    <h3 class="global-econ-title">${I18n.t('global.econ_title')}</h3>
-    <div class="global-econ-items">
-      ${items.map(m => `
-        <div class="global-econ-item">
-          <span class="global-econ-icon">${m.icon}</span>
-          <span class="global-econ-value">${m.value}</span>
-          <span class="global-econ-label">${I18n.t(m.key)}</span>
-        </div>`).join('')}
+    <h3 class="global-section-title">${I18n.t('global.econ_title')}</h3>
+    <div class="econ-content">
+      <div class="econ-headline">
+        ${items.map(m => `
+          <div class="econ-big-stat">
+            <span class="econ-icon">${m.icon}</span>
+            <span class="econ-big-num">${m.value}</span>
+            <span class="econ-big-label">${I18n.t(m.key)}</span>
+          </div>`).join('')}
+      </div>
     </div>`;
 }
 
