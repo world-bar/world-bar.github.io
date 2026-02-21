@@ -13,6 +13,57 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (typeof CountrySelector !== 'undefined') CountrySelector.init();
 
+  // Global tooltip element
+  const _tooltip = document.createElement('div');
+  _tooltip.id = 'gpb-tooltip';
+  document.body.appendChild(_tooltip);
+
+  function _showTooltip(btn) {
+    const text = btn.dataset.countries || (btn.dataset.desc ? I18n.t(btn.dataset.desc) : '');
+    if (!text || text === btn.dataset.desc) return;
+    _tooltip.textContent = text;
+    _tooltip.classList.add('visible');
+    const rect = btn.getBoundingClientRect();
+    const tipH = _tooltip.offsetHeight;
+    const tipW = _tooltip.offsetWidth;
+    let top = rect.top - tipH - 8;
+    let left = rect.left + rect.width / 2 - tipW / 2;
+    if (top < 8) top = rect.bottom + 8;
+    if (left < 8) left = 8;
+    if (left + tipW > window.innerWidth - 8) left = window.innerWidth - tipW - 8;
+    _tooltip.style.top = top + 'px';
+    _tooltip.style.left = left + 'px';
+  }
+
+  function _hideTooltip() {
+    _tooltip.classList.remove('visible');
+    document.querySelectorAll('.info-btn.active').forEach(b => b.classList.remove('active'));
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.info-btn');
+    if (btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (btn.classList.contains('active')) { _hideTooltip(); }
+      else { _hideTooltip(); btn.classList.add('active'); _showTooltip(btn); }
+      return;
+    }
+    _hideTooltip();
+  });
+
+  document.addEventListener('mouseenter', (e) => {
+    if (e.target.classList && e.target.classList.contains('info-btn')) {
+      _hideTooltip(); e.target.classList.add('active'); _showTooltip(e.target);
+    }
+  }, true);
+
+  document.addEventListener('mouseleave', (e) => {
+    if (e.target.classList && e.target.classList.contains('info-btn')) { _hideTooltip(); }
+  }, true);
+
+  window.addEventListener('scroll', () => { _hideTooltip(); }, { passive: true });
+
   const page = detectPage();
   if (page === 'index') renderIndex();
   else if (page === 'country') renderCountry();
@@ -67,6 +118,133 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+
+/* ===== Helper: export i18n key ===== */
+function exportKey(name) {
+  return 'export.' + name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+}
+
+/* ===== Helper: export product icon ===== */
+const _exportIcons = {
+  oil_and_gas:'⛽',crude_oil:'🛢️',petroleum_products:'🛢️',natural_gas:'🔥',lng:'🔥',coal:'⛏️',
+  machinery:'⚙️',vehicles:'🚗',automobiles:'🚗',auto_parts:'🔧',aircraft:'✈️',aerospace:'🚀',ships:'🚢',
+  electronics:'💻',semiconductors:'💾',computers:'🖥️',telecom_equipment:'📡',it_services:'💻',software:'💻',
+  gold:'🥇',diamonds:'💎',copper:'🔶',iron_ore:'⛏️',aluminum:'🔩',steel:'🔩',zinc:'🔩',titanium:'🔩',
+  ferro_alloys:'🔩',precious_metals:'✨',minerals:'⛏️',mining_products:'⛏️',
+  textiles:'🧵',clothing:'👔',garments:'👔',fashion_and_textiles:'👗',footwear:'👟',leather_goods:'👜',
+  agriculture:'🌾',wheat:'🌾',rice:'🍚',corn:'🌽',soybeans:'🫘',cotton:'🧶',tobacco:'🍂',sugar:'🍬',
+  coffee:'☕',tea:'🍵',cocoa:'🍫',spices:'🌿',palm_oil:'🌴',rubber:'🌳',timber:'🪵',wood_products:'🪵',
+  fish_and_seafood:'🐟',meat:'🥩',dairy:'🧀',food_products:'🍽️',beverages:'🍷',wine:'🍷',
+  pharmaceuticals:'💊',chemicals:'🧪',fertilizers:'🧪',plastics:'♻️',
+  fruits_and_vegetables:'🍎',cashew_nuts:'🥜',nuts:'🥜',vanilla:'🌺',flowers:'💐',
+  tourism:'🏖️',financial_services:'🏦',
+  cement:'🧱',construction_materials:'🏗️',
+  solar_panels:'☀️',electrical_equipment:'🔌',medical_devices:'🏥',
+  weapons_and_defense:'🛡️',military_equipment:'🛡️'
+};
+function exportIcon(name) {
+  const k = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+  return _exportIcons[k] || '📦';
+}
+
+/* ===== Helper: info tooltip button ===== */
+function infoBtn(descKey) {
+  return `<span class="info-btn" data-desc="${descKey}" role="button" tabindex="0">i</span>`;
+}
+
+/* ===== Helper: localized list join ===== */
+function _formatList(items) {
+  if (items.length === 0) return '';
+  if (items.length === 1) return items[0];
+  const sep = I18n.t('summary.list_separator');
+  const last = I18n.t('summary.list_last_separator');
+  return items.slice(0, -1).join(sep) + last + items[items.length - 1];
+}
+
+/* ===== Country summary builder ===== */
+function _buildCountrySummary(country, overall, rank, totalCountries) {
+  const lines = [];
+  const globalAvgs = Data.getGlobalAverages();
+  const pillars = Data.getPillars();
+
+  lines.push(`<div class="summary-line"><span class="summary-icon">📊</span> ${_tpl(I18n.t('summary.country.ranked'), '<strong>' + rank + '</strong>', '<strong>' + totalCountries + '</strong>', '<strong>' + overall + '</strong>')} ${I18n.t('summary.country.score_label.' + Data.getScoreLabel(overall))}</div>`);
+
+  const diffs = pillars.map(p => ({
+    name: I18n.t(p.name_key),
+    diff: (country.scores[p.id] || 0) - (globalAvgs[p.id] || 0)
+  }));
+  diffs.sort((a, b) => b.diff - a.diff);
+
+  const strengths = diffs.filter(d => d.diff > 5).slice(0, 3);
+  if (strengths.length) {
+    lines.push(`<div class="summary-line"><span class="summary-icon">✅</span> ${_tpl(I18n.t('summary.country.strengths'), '<strong>' + _formatList(strengths.map(s => s.name)) + '</strong>')}</div>`);
+  }
+  const weaknesses = diffs.filter(d => d.diff < -5).sort((a, b) => a.diff - b.diff).slice(0, 3);
+  if (weaknesses.length) {
+    lines.push(`<div class="summary-line"><span class="summary-icon">⚠️</span> ${_tpl(I18n.t('summary.country.weaknesses'), '<strong>' + _formatList(weaknesses.map(w => w.name)) + '</strong>')}</div>`);
+  }
+
+  const pol = Data.getPolitics(country.id);
+  if (pol) {
+    lines.push(`<div class="summary-line"><span class="summary-icon">🏛️</span> ${_tpl(I18n.t('summary.country.regime_info'), '<strong>' + I18n.t('pol.regime.' + pol.regime) + '</strong>', '<strong>' + pol.democracy_score + '</strong>')}</div>`);
+    if (pol.conflict_status && pol.conflict_status !== 'peace') {
+      lines.push(`<div class="summary-line"><span class="summary-icon">🔴</span> ${_tpl(I18n.t('summary.country.conflict'), '<strong>' + I18n.t('peace.status.' + pol.conflict_status) + '</strong>')}</div>`);
+    }
+  }
+
+  const econ = Data.getEconomics(country.id);
+  if (econ) {
+    const gdpCap = econ.gdp_per_capita >= 1000
+      ? '$' + (econ.gdp_per_capita / 1000).toFixed(1) + 'K'
+      : '$' + econ.gdp_per_capita;
+    lines.push(`<div class="summary-line"><span class="summary-icon">💰</span> ${_tpl(I18n.t('summary.country.econ_highlight'), '<strong>' + gdpCap + '</strong>', '<strong>' + econ.unemployment + '</strong>', '<strong>' + econ.inflation + '</strong>')}</div>`);
+  }
+
+  return lines.join('');
+}
+
+/* ===== World summary builder ===== */
+function _buildWorldSummary() {
+  const parts = [];
+  const countries = Data.getAllCountries();
+  const politics = Data.getAllPolitics();
+  const polEntries = Object.values(politics);
+  const globalAvgs = Data.getGlobalAverages();
+  const pillars = Data.getPillars();
+
+  // Para 1 — hook + mission
+  parts.push(`<p>${_tpl(I18n.t('summary.world.para1'), '<strong>' + countries.length + '</strong>')}</p>`);
+
+  // Para 2 — political landscape + peace
+  const regimes = { full_democracy: 0, flawed_democracy: 0, hybrid_regime: 0, authoritarian: 0 };
+  polEntries.forEach(p => { regimes[p.regime] = (regimes[p.regime] || 0) + 1; });
+  let atPeace = 0, inConflict = 0;
+  polEntries.forEach(p => { if (p.conflict_status === 'peace') atPeace++; else inConflict++; });
+  parts.push(`<p>${_tpl(I18n.t('summary.world.para2'), '<strong>' + regimes.full_democracy + '</strong>', '<strong>' + regimes.flawed_democracy + '</strong>', '<strong>' + regimes.hybrid_regime + '</strong>', '<strong>' + regimes.authoritarian + '</strong>', '<strong>' + atPeace + '</strong>', '<strong>' + inConflict + '</strong>')}</p>`);
+
+  // Para 3 — economy
+  const allEcon = countries.map(c => Data.getEconomics(c.id)).filter(Boolean);
+  if (allEcon.length) {
+    const n = allEcon.length;
+    const avgGdpCap = Math.round(allEcon.reduce((s, e) => s + e.gdp_per_capita, 0) / n);
+    const avgUnemp = (allEcon.reduce((s, e) => s + e.unemployment, 0) / n).toFixed(1);
+    const avgInfl = (allEcon.reduce((s, e) => s + e.inflation, 0) / n).toFixed(1);
+    const fmtGdp = avgGdpCap >= 1000 ? '$' + (avgGdpCap / 1000).toFixed(1) + 'K' : '$' + avgGdpCap;
+    parts.push(`<p>${_tpl(I18n.t('summary.world.para3'), '<strong>' + fmtGdp + '</strong>', '<strong>' + avgUnemp + '</strong>', '<strong>' + avgInfl + '</strong>')}</p>`);
+  }
+
+  // Para 4 — strengths & weaknesses
+  const pillarAvgs = pillars.map(p => ({ name: I18n.t(p.name_key), avg: globalAvgs[p.id] || 0 }));
+  pillarAvgs.sort((a, b) => b.avg - a.avg);
+  const top3 = '<strong>' + _formatList(pillarAvgs.slice(0, 3).map(p => p.name)) + '</strong>';
+  const bot3 = '<strong>' + _formatList(pillarAvgs.slice(-3).reverse().map(p => p.name)) + '</strong>';
+  parts.push(`<p>${_tpl(I18n.t('summary.world.para4'), top3, bot3)}</p>`);
+
+  // CTA
+  parts.push(`<p class="summary-cta">${I18n.t('summary.world.cta')}</p>`);
+
+  return parts.join('');
+}
 
 function _shareBarHtml() {
   return `
@@ -138,6 +316,10 @@ function detectPage() {
 }
 
 function renderIndex() {
+  const summaryEl = document.getElementById('world-summary');
+  if (summaryEl) {
+    summaryEl.innerHTML = `<div class="summary-box summary-box--editorial">${_buildWorldSummary()}</div>`;
+  }
   renderGovernanceBar();
   renderPeaceBar();
   renderGlobalEconBar();
@@ -229,18 +411,21 @@ function renderGovernanceBar() {
           <span class="ind-title">${I18n.t('corruption.title')}</span>
           <div class="ind-bar-wrap"><div class="ind-bar" style="width:${corr.pct}%;background:${corr.color}"></div></div>
           <span class="ind-label" style="color:${corr.color}">Avg. #${avgCorruption}</span>
+          ${infoBtn('desc.corruption')}
         </div>
         <div class="indicator-meter">
           <span class="ind-icon">\u2696\uFE0F</span>
           <span class="ind-title">${I18n.t('justice.title')}</span>
           <div class="ind-bar-wrap"><div class="ind-bar" style="width:${rolPct}%;background:${rolColor}"></div></div>
           <span class="ind-label" style="color:${rolColor}">Avg. ${avgRuleOfLaw}</span>
+          ${infoBtn('desc.rule_of_law')}
         </div>
         <div class="indicator-meter">
           <span class="ind-icon">\uD83D\uDCF0</span>
           <span class="ind-title">${I18n.t('press.title')}</span>
           <div class="ind-bar-wrap"><div class="ind-bar" style="width:${press.pct}%;background:${press.color}"></div></div>
           <span class="ind-label" style="color:${press.color}">Avg. #${avgPress}</span>
+          ${infoBtn('desc.press_freedom')}
         </div>
       </div>
       <div class="system-tags">${systemTags}</div>
@@ -279,7 +464,9 @@ function renderPeaceBar() {
       const c = Data.getCountry(id);
       return c ? I18n.getCountryName(c) : id;
     });
-    const nameList = names.length <= 4 ? names.join(', ') : names.slice(0, 3).join(', ') + ` +${names.length - 3}`;
+    const nameList = names.length <= 4
+      ? names.join(', ')
+      : names.slice(0, 3).join(', ') + ` <span class="info-btn" data-countries="${names.join(', ').replace(/"/g, '&quot;')}" role="button" tabindex="0">i</span>`;
     return `<div class="peace-status-row">
       <span class="peace-icon">${statusIcons[k]}</span>
       <span class="peace-label">${I18n.t('peace.status.' + k)}</span>
@@ -320,11 +507,11 @@ function renderGlobalEconBar() {
   function fmtK(v) { return v >= 1000 ? `$${(v/1000).toFixed(1)}K` : `$${v}`; }
 
   const items = [
-    { key: 'global.gdp_total', value: fmtT(totalGdp), icon: '\uD83C\uDF0D' },
-    { key: 'global.avg_gdp_capita', value: fmtK(avgGdpCap), icon: '\uD83D\uDC64' },
-    { key: 'global.avg_inflation', value: `${avgInflation}%`, icon: '\uD83D\uDCC8' },
-    { key: 'global.avg_unemployment', value: `${avgUnemployment}%`, icon: '\uD83D\uDCBC' },
-    { key: 'global.avg_debt', value: `${avgDebt}%`, icon: '\uD83C\uDFE6' }
+    { key: 'global.gdp_total', value: fmtT(totalGdp), icon: '\uD83C\uDF0D', desc: 'desc.global_gdp' },
+    { key: 'global.avg_gdp_capita', value: fmtK(avgGdpCap), icon: '\uD83D\uDC64', desc: 'desc.global_gdp_capita' },
+    { key: 'global.avg_inflation', value: `${avgInflation}%`, icon: '\uD83D\uDCC8', desc: 'desc.global_inflation' },
+    { key: 'global.avg_unemployment', value: `${avgUnemployment}%`, icon: '\uD83D\uDCBC', desc: 'desc.global_unemployment' },
+    { key: 'global.avg_debt', value: `${avgDebt}%`, icon: '\uD83C\uDFE6', desc: 'desc.global_debt' }
   ];
 
   container.innerHTML = `
@@ -334,7 +521,7 @@ function renderGlobalEconBar() {
         ${items.map(m => `
           <div class="econ-big-stat">
             <span class="econ-icon">${m.icon}</span>
-            <span class="econ-big-num">${m.value}</span>
+            <span class="econ-big-num">${m.value} ${infoBtn(m.desc)}</span>
             <span class="econ-big-label">${I18n.t(m.key)}</span>
           </div>`).join('')}
       </div>
@@ -581,7 +768,7 @@ function renderTradePage() {
     const balance = e.trade_balance != null ? e.trade_balance : (e.exports && e.imports ? e.exports - e.imports : null);
     const balanceStr = balance != null ? `${balance >= 0 ? '+' : ''}${fmtB(Math.abs(balance))}` : '\u2014';
     const balanceColor = balance != null ? (balance >= 0 ? '#2E7D32' : '#E53935') : '';
-    const topExports = (e.top_exports || []).slice(0, 3).join(', ');
+    const topExports = (e.top_exports || []).slice(0, 3).map(t => I18n.t(exportKey(t))).join(', ');
     return `<tr>
       <td class="rank-num">${i + 1}</td>
       <td><a href="country.html?id=${d.country.id}">${name}</a></td>
@@ -847,6 +1034,7 @@ function renderCountry() {
           <div class="score-bar-fill score-${label}" style="width:${score}%"></div>
         </div>
         <span class="score-value">${score}</span>
+        ${infoBtn(p.desc_key)}
       </div>`;
   }).join('');
 
@@ -879,6 +1067,7 @@ function renderCountry() {
         </div>
         <span class="sat-label" style="color:${satColor}">${I18n.t(labelKey)}</span>
         <span class="sat-score">${h}/10</span>
+        ${infoBtn('desc.satisfaction')}
       </div>`;
     }
 
@@ -900,6 +1089,7 @@ function renderCountry() {
         <div class="ind-bar-wrap"><div class="ind-bar" style="width:${cPct}%;background:${cColor}"></div></div>
         <span class="ind-label" style="color:${cColor}">${I18n.t(cKey)}</span>
         <span class="ind-rank">#${cr}</span>
+        ${infoBtn('desc.corruption')}
       </div>`;
     }
 
@@ -921,6 +1111,7 @@ function renderCountry() {
         <div class="ind-bar-wrap"><div class="ind-bar" style="width:${jPct}%;background:${jColor}"></div></div>
         <span class="ind-label" style="color:${jColor}">${I18n.t(jKey)}</span>
         <span class="ind-rank">${rl.toFixed(2)}</span>
+        ${infoBtn('desc.rule_of_law')}
       </div>`;
     }
 
@@ -942,27 +1133,33 @@ function renderCountry() {
         <div class="ind-bar-wrap"><div class="ind-bar" style="width:${pPct}%;background:${pColor}"></div></div>
         <span class="ind-label" style="color:${pColor}">${I18n.t(pKey)}</span>
         <span class="ind-rank">#${pr}</span>
+        ${infoBtn('desc.press_freedom')}
       </div>`;
     }
 
     govHtml = `
-    <div class="country-gov-bar">
-      <span class="gov-tag" style="border-color:${regimeColor};color:${regimeColor}">${I18n.t('pol.regime.' + pol.regime)}</span>
-      <span class="gov-tag">${I18n.t('pol.system.' + pol.system)}</span>
-      <span class="gov-tag">${I18n.t('country.democracy')}: ${pol.democracy_score}/10</span>
-      <span class="gov-tag">${statusIcons[pol.conflict_status] || ''} ${I18n.t('peace.status.' + pol.conflict_status)}</span>
-    </div>
-    ${satHtml}
-    <div class="indicator-meters">
-      ${corruptionHtml}
-      ${justiceHtml}
-      ${pressHtml}
+    <div class="country-section">
+      <div class="country-gov-bar">
+        <span class="gov-tag" style="border-color:${regimeColor};color:${regimeColor}">${I18n.t('pol.regime.' + pol.regime)}</span>
+        <span class="gov-tag">${I18n.t('pol.system.' + pol.system)}</span>
+        <span class="gov-tag">${I18n.t('country.democracy')}: ${pol.democracy_score}/10</span>
+        <span class="gov-tag">${statusIcons[pol.conflict_status] || ''} ${I18n.t('peace.status.' + pol.conflict_status)}</span>
+      </div>
+      ${satHtml}
+      <div class="indicator-meters">
+        ${corruptionHtml}
+        ${justiceHtml}
+        ${pressHtml}
+      </div>
     </div>`;
   }
+
+  const summaryText = _buildCountrySummary(country, overall, rank, ranking.length);
 
   container.innerHTML = `
     <a href="index.html" class="back-link">&larr; ${I18n.t('country.back')}</a>
     <h1 class="country-name">${name}</h1>
+    <div class="summary-box">${summaryText}</div>
     ${govHtml}
     <div class="country-meta">
       <div class="meta-card">
@@ -974,8 +1171,10 @@ function renderCountry() {
         <div class="meta-value">#${rank} / ${ranking.length}</div>
       </div>
     </div>
-    <h2 class="scores-heading">${I18n.t('country.pillar_scores')}</h2>
-    <div class="score-bars">${pillarBars}</div>
+    <div class="country-section">
+      <h2 class="scores-heading">${I18n.t('country.pillar_scores')}</h2>
+      <div class="score-bars">${pillarBars}</div>
+    </div>
     <div id="econ-dashboard"></div>
     <div id="share-bar-country"></div>`;
 
@@ -1013,18 +1212,18 @@ function renderEconomicDashboard(country) {
   function fmtK(v) { return v >= 1000 ? `$${(v/1000).toFixed(1)}K` : `$${v.toFixed(0)}`; }
 
   const metrics = [
-    { key: 'econ.gdp', value: fmtB(econ.gdp) },
-    { key: 'econ.gdp_per_capita', value: fmtK(econ.gdp_per_capita) },
-    { key: 'econ.public_debt', value: `${econ.public_debt_pct}%` },
-    { key: 'econ.unemployment', value: `${econ.unemployment}%` },
-    { key: 'econ.inflation', value: `${econ.inflation}%` },
-    { key: 'econ.gni_per_capita', value: fmtK(econ.gni_per_capita) }
+    { key: 'econ.gdp', value: fmtB(econ.gdp), desc: 'desc.gdp' },
+    { key: 'econ.gdp_per_capita', value: fmtK(econ.gdp_per_capita), desc: 'desc.gdp_per_capita' },
+    { key: 'econ.public_debt', value: `${econ.public_debt_pct}%`, desc: 'desc.public_debt' },
+    { key: 'econ.unemployment', value: `${econ.unemployment}%`, desc: 'desc.unemployment' },
+    { key: 'econ.inflation', value: `${econ.inflation}%`, desc: 'desc.inflation' },
+    { key: 'econ.gni_per_capita', value: fmtK(econ.gni_per_capita), desc: 'desc.gni_per_capita' }
   ];
 
   const metricCards = metrics.map(m => `
     <div class="econ-metric">
       <div class="econ-metric-label">${I18n.t(m.key)}</div>
-      <div class="econ-metric-value">${m.value}</div>
+      <div class="econ-metric-value">${m.value} ${infoBtn(m.desc)}</div>
     </div>`).join('');
 
   const revKeys = ['taxes', 'social_contributions', 'grants', 'other'];
@@ -1032,12 +1231,12 @@ function renderEconomicDashboard(country) {
 
   const revLegend = revKeys.map((k, i) => {
     const colors = ['#2E7D32', '#4CAF50', '#81C784', '#C8E6C9'];
-    return `<div class="econ-legend-item"><span class="econ-legend-dot" style="background:${colors[i]}"></span>${I18n.t('econ.rev.' + k)}: ${econ.revenue[k]}%</div>`;
+    return `<div class="econ-legend-item"><span class="econ-legend-dot" style="background:${colors[i]}"></span>${I18n.t('econ.rev.' + k)}: ${econ.revenue[k]}% ${infoBtn('desc.rev.' + k)}</div>`;
   }).join('');
 
   const expColors = ['#1565C0', '#42A5F5', '#7E57C2', '#EF5350', '#FF7043', '#FFA726', '#78909C', '#BDBDBD'];
   const expLegend = expKeys.map((k, i) =>
-    `<div class="econ-legend-item"><span class="econ-legend-dot" style="background:${expColors[i]}"></span>${I18n.t('econ.exp.' + k)}: ${econ.expenditure[k]}%</div>`
+    `<div class="econ-legend-item"><span class="econ-legend-dot" style="background:${expColors[i]}"></span>${I18n.t('econ.exp.' + k)}: ${econ.expenditure[k]}% ${infoBtn('desc.exp.' + k)}</div>`
   ).join('');
 
   // Trade section
@@ -1046,44 +1245,48 @@ function renderEconomicDashboard(country) {
     const balance = econ.trade_balance || (econ.exports - econ.imports);
     const balanceSign = balance >= 0 ? '+' : '';
     const balanceColor = balance >= 0 ? '#2E7D32' : '#E53935';
-    const topExports = (econ.top_exports || []).map(t => `<span class="trade-tag">${t}</span>`).join('');
+    const topExports = (econ.top_exports || []).map(t => `<span class="trade-tag">${exportIcon(t)} ${I18n.t(exportKey(t))}</span>`).join('');
 
     tradeHtml = `
-    <h2 class="scores-heading">${I18n.t('trade.title')}</h2>
-    <div class="econ-metrics econ-metrics-4">
-      <div class="econ-metric">
-        <div class="econ-metric-label">${I18n.t('trade.exports')}</div>
-        <div class="econ-metric-value">${fmtB(econ.exports)}</div>
+    <div class="country-section">
+      <h2 class="scores-heading">${I18n.t('trade.title')}</h2>
+      <div class="econ-metrics econ-metrics-4">
+        <div class="econ-metric">
+          <div class="econ-metric-label">${I18n.t('trade.exports')}</div>
+          <div class="econ-metric-value">${fmtB(econ.exports)} ${infoBtn('desc.trade_exports')}</div>
+        </div>
+        <div class="econ-metric">
+          <div class="econ-metric-label">${I18n.t('trade.imports')}</div>
+          <div class="econ-metric-value">${fmtB(econ.imports)} ${infoBtn('desc.trade_imports')}</div>
+        </div>
+        <div class="econ-metric">
+          <div class="econ-metric-label">${I18n.t('trade.balance')}</div>
+          <div class="econ-metric-value" style="color:${balanceColor}">${balanceSign}${fmtB(Math.abs(balance))} ${infoBtn('desc.trade_balance')}</div>
+        </div>
+        <div class="econ-metric">
+          <div class="econ-metric-label">${I18n.t('trade.openness')}</div>
+          <div class="econ-metric-value">${econ.exports_pct_gdp || '—'}% ${infoBtn('desc.trade_openness')}</div>
+        </div>
       </div>
-      <div class="econ-metric">
-        <div class="econ-metric-label">${I18n.t('trade.imports')}</div>
-        <div class="econ-metric-value">${fmtB(econ.imports)}</div>
-      </div>
-      <div class="econ-metric">
-        <div class="econ-metric-label">${I18n.t('trade.balance')}</div>
-        <div class="econ-metric-value" style="color:${balanceColor}">${balanceSign}${fmtB(Math.abs(balance))}</div>
-      </div>
-      <div class="econ-metric">
-        <div class="econ-metric-label">${I18n.t('trade.openness')}</div>
-        <div class="econ-metric-value">${econ.exports_pct_gdp || '—'}%</div>
-      </div>
-    </div>
-    ${topExports ? `<div class="trade-tags-section"><span class="trade-tags-label">${I18n.t('trade.top_exports')}:</span> ${topExports}</div>` : ''}`;
+      ${topExports ? `<div class="trade-tags-section"><span class="trade-tags-label">${I18n.t('trade.top_exports')}:</span> ${topExports}</div>` : ''}
+    </div>`;
   }
 
   container.innerHTML = `
-    <h2 class="scores-heading">${I18n.t('econ.title')}</h2>
-    <div class="econ-metrics">${metricCards}</div>
-    <div class="econ-charts">
-      <div class="econ-chart-box">
-        <h3>${I18n.t('econ.revenue_title')}</h3>
-        <canvas id="chart-revenue"></canvas>
-        <div class="econ-legend">${revLegend}</div>
-      </div>
-      <div class="econ-chart-box">
-        <h3>${I18n.t('econ.expenditure_title')}</h3>
-        <canvas id="chart-expenditure"></canvas>
-        <div class="econ-legend">${expLegend}</div>
+    <div class="country-section">
+      <h2 class="scores-heading">${I18n.t('econ.title')}</h2>
+      <div class="econ-metrics">${metricCards}</div>
+      <div class="econ-charts">
+        <div class="econ-chart-box">
+          <h3>${I18n.t('econ.revenue_title')}</h3>
+          <canvas id="chart-revenue"></canvas>
+          <div class="econ-legend">${revLegend}</div>
+        </div>
+        <div class="econ-chart-box">
+          <h3>${I18n.t('econ.expenditure_title')}</h3>
+          <canvas id="chart-expenditure"></canvas>
+          <div class="econ-legend">${expLegend}</div>
+        </div>
       </div>
     </div>
     ${tradeHtml}`;
