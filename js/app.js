@@ -114,6 +114,45 @@ document.addEventListener('DOMContentLoaded', async () => {
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Horizontal scroll arrows for .grid-5 containers
+  document.querySelectorAll('.grid-5').forEach(grid => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'scroll-wrapper';
+    grid.parentNode.insertBefore(wrapper, grid);
+    wrapper.appendChild(grid);
+
+    const leftBtn = document.createElement('button');
+    leftBtn.className = 'scroll-arrow scroll-arrow-left';
+    leftBtn.innerHTML = '&#9664;';
+    leftBtn.setAttribute('aria-label', 'Scroll left');
+
+    const rightBtn = document.createElement('button');
+    rightBtn.className = 'scroll-arrow scroll-arrow-right';
+    rightBtn.innerHTML = '&#9654;';
+    rightBtn.setAttribute('aria-label', 'Scroll right');
+
+    wrapper.appendChild(leftBtn);
+    wrapper.appendChild(rightBtn);
+
+    function updateArrows() {
+      const canLeft = grid.scrollLeft > 5;
+      const canRight = grid.scrollLeft < grid.scrollWidth - grid.clientWidth - 5;
+      leftBtn.classList.toggle('visible', canLeft);
+      rightBtn.classList.toggle('visible', canRight);
+    }
+
+    grid.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    setTimeout(updateArrows, 200);
+
+    leftBtn.addEventListener('click', () => {
+      grid.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', () => {
+      grid.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  });
 });
 
 /* ===== Helper: export i18n key ===== */
