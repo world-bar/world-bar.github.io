@@ -1617,6 +1617,7 @@ function renderCompare() {
 
 // ===== Quiz =====
 let _quizState = null;
+let _quizDifficulty = 'medium';
 
 function renderQuiz() {
   const container = document.getElementById('quiz-content');
@@ -1641,9 +1642,25 @@ function renderQuiz() {
         <div class="quiz-start-icon">🌍</div>
         <h1>${I18n.t('quiz.title')}</h1>
         <p>${I18n.t('quiz.subtitle')}</p>
+        <div class="quiz-difficulty">
+          <p style="font-weight:600;margin-bottom:0.5rem;">${I18n.t('quiz.difficulty') || 'Choose difficulty'}</p>
+          <div class="quiz-diff-buttons">
+            <button class="quiz-diff-btn${_quizDifficulty === 'easy' ? ' active' : ''}" data-diff="easy">🌱 ${I18n.t('quiz.easy') || 'Easy'}</button>
+            <button class="quiz-diff-btn${_quizDifficulty === 'medium' ? ' active' : ''}" data-diff="medium">🌿 ${I18n.t('quiz.medium') || 'Medium'}</button>
+            <button class="quiz-diff-btn${_quizDifficulty === 'hard' ? ' active' : ''}" data-diff="hard">🌲 ${I18n.t('quiz.hard') || 'Hard'}</button>
+          </div>
+        </div>
         <button class="quiz-start-btn" id="quiz-start-btn">${I18n.t('quiz.start')}</button>
       </div>
     </div>`;
+
+  container.querySelectorAll('.quiz-diff-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      _quizDifficulty = btn.dataset.diff;
+      container.querySelectorAll('.quiz-diff-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
 
   document.getElementById('quiz-start-btn').addEventListener('click', () => {
     _quizState = {
@@ -1680,35 +1697,62 @@ function _generateQuizQuestions() {
   const politics = Data.getAllPolitics();
   const countryIds = countries.map(c => c.id).filter(id => politics[id]);
 
+  // Tag each generator with a difficulty level:
+  // easy: basic "which has highest/lowest" or "which is happier"
+  // medium: mix of government systems, regime types, GDP comparisons
+  // hard: tricky specifics like conflict status, corruption ranks, press freedom
   const generators = [
-    _genHighestDemocracy,
-    _genLowestDemocracy,
-    _genGovSystem,
-    _genRegimeType,
-    _genHigherGdp,
-    _genHappierCountry,
-    _genLowestCorruption,
-    _genBestPress,
-    _genConflictStatus
+    { fn: _genHighestDemocracy,  diff: 'easy' },
+    { fn: _genHigherGdp,        diff: 'easy' },
+    { fn: _genHappierCountry,   diff: 'easy' },
+    { fn: _genLowestDemocracy,  diff: 'medium' },
+    { fn: _genRegimeType,       diff: 'medium' },
+    { fn: _genGovSystem,        diff: 'medium' },
+    { fn: _genLowestCorruption, diff: 'hard' },
+    { fn: _genBestPress,        diff: 'hard' },
+    { fn: _genConflictStatus,   diff: 'hard' }
   ];
 
+  // Filter generators by difficulty
+  let filtered;
+  if (_quizDifficulty === 'easy') {
+    filtered = generators.filter(g => g.diff === 'easy');
+  } else if (_quizDifficulty === 'hard') {
+    filtered = generators.filter(g => g.diff === 'hard');
+  } else {
+    filtered = generators; // medium = mix of all
+  }
+
   const questions = [];
-  const shuffledGens = _shuffle(generators);
+  const shuffledGens = _shuffle(filtered);
 
   // First pass: one of each type
   for (const gen of shuffledGens) {
     if (questions.length >= 10) break;
-    const q = gen(countries, politics, countryIds);
+    const q = gen.fn(countries, politics, countryIds);
     if (q) questions.push(q);
   }
 
-  // Fill remaining with random types
+  // Fill remaining with random types (from filtered set first, then all)
   let attempts = 0;
   while (questions.length < 10 && attempts < 30) {
-    const gen = generators[Math.floor(Math.random() * generators.length)];
-    const q = gen(countries, politics, countryIds);
+    const pool = filtered.length > 0 ? filtered : generators;
+    const gen = pool[Math.floor(Math.random() * pool.length)];
+    const q = gen.fn(countries, politics, countryIds);
     if (q) questions.push(q);
     attempts++;
+  }
+
+  // If still not enough, fill from all generators
+  if (questions.length < 10) {
+    const allGens = _shuffle(generators);
+    let extraAttempts = 0;
+    while (questions.length < 10 && extraAttempts < 20) {
+      const gen = allGens[extraAttempts % allGens.length];
+      const q = gen.fn(countries, politics, countryIds);
+      if (q) questions.push(q);
+      extraAttempts++;
+    }
   }
 
   return _shuffle(questions.slice(0, 10));

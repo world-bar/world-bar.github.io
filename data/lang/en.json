@@ -150,6 +150,7 @@
   "privacy.contact.title": "5. Contact",
   "privacy.updated": "Last updated: February 2026",
 
+  "footer.projects": "Our Projects",
   "footer.about": "About",
   "footer.about.project": "About the Project",
   "footer.about.methodology": "Methodology",
@@ -298,6 +299,10 @@
   "nav.quiz": "Quiz",
   "quiz.title": "Prosperity Quiz",
   "quiz.subtitle": "Test your knowledge of global prosperity",
+  "quiz.difficulty": "Choose difficulty",
+  "quiz.easy": "Easy",
+  "quiz.medium": "Medium",
+  "quiz.hard": "Hard",
   "quiz.start": "Start Quiz",
   "quiz.question_of": "Question {0} of {1}",
   "quiz.score": "Score: {0}",

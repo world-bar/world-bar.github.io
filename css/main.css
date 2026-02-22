@@ -1494,6 +1494,40 @@ body {
     transform: translateY(-1px);
 }
 
+.quiz-difficulty {
+    margin: 1.5rem 0;
+}
+
+.quiz-diff-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quiz-diff-btn {
+    padding: 0.6rem 1.4rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 10px;
+    background: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.quiz-diff-btn:hover {
+    border-color: var(--un-blue);
+    background: var(--bg-light);
+}
+
+.quiz-diff-btn.active {
+    border-color: var(--un-blue);
+    background: var(--un-blue);
+    color: var(--white);
+}
+
 .quiz-header {
     display: flex;
     justify-content: space-between;
